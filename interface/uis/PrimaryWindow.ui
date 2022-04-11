@@ -112,13 +112,13 @@
       <rect>
        <x>100</x>
        <y>150</y>
-       <width>391</width>
-       <height>131</height>
+       <width>404</width>
+       <height>135</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout">
       <property name="horizontalSpacing">
-       <number>69</number>
+       <number>51</number>
       </property>
       <property name="verticalSpacing">
        <number>32</number>
@@ -130,10 +130,10 @@
        <number>22</number>
       </property>
       <property name="rightMargin">
-       <number>72</number>
+       <number>66</number>
       </property>
       <property name="bottomMargin">
-       <number>21</number>
+       <number>19</number>
       </property>
       <item row="0" column="0">
        <widget class="QLabel" name="label_2">

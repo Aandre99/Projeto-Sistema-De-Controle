@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'PrimaryWindow.ui'
+# Form implementation generated from reading ui file 'uis/PrimaryWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -44,11 +44,11 @@ class Ui_PrimaryWindow(object):
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.formLayoutWidget = QtWidgets.QWidget(self.frame_white)
-        self.formLayoutWidget.setGeometry(QtCore.QRect(100, 150, 391, 131))
+        self.formLayoutWidget.setGeometry(QtCore.QRect(100, 150, 404, 135))
         self.formLayoutWidget.setObjectName("formLayoutWidget")
         self.formLayout = QtWidgets.QFormLayout(self.formLayoutWidget)
-        self.formLayout.setContentsMargins(24, 22, 72, 21)
-        self.formLayout.setHorizontalSpacing(69)
+        self.formLayout.setContentsMargins(24, 22, 66, 19)
+        self.formLayout.setHorizontalSpacing(51)
         self.formLayout.setVerticalSpacing(32)
         self.formLayout.setObjectName("formLayout")
         self.label_2 = QtWidgets.QLabel(self.formLayoutWidget)
