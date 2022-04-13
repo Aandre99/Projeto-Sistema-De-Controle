@@ -1,3 +1,6 @@
+
+#source https://github.com/ap--/python-live-plotting/blob/master/plot_pyqtgraph.py
+
 from pyqtgraph.Qt import QtGui, QtCore
 from PyQt5.QtWidgets import QApplication
 import pyqtgraph as pg
