@@ -6,12 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>987</width>
-    <height>599</height>
+    <width>1035</width>
+    <height>535</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1035</width>
+    <height>535</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1035</width>
+    <height>535</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Sistema de Monitoramento</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QFrame" name="frame_geral">
@@ -19,14 +31,20 @@
      <rect>
       <x>-1</x>
       <y>-1</y>
-      <width>991</width>
-      <height>601</height>
+      <width>1041</width>
+      <height>541</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
       <width>0</width>
       <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>1041</width>
+      <height>611</height>
      </size>
     </property>
     <property name="styleSheet">
@@ -48,13 +66,13 @@ border: 1px solid white;
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>279</y>
-       <width>201</width>
+       <y>230</y>
+       <width>231</width>
        <height>201</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">border:0.5px solid gray;</string>
      </property>
      <property name="currentIndex">
       <number>0</number>
@@ -66,10 +84,10 @@ border: 1px solid white;
        </property>
        <property name="geometry">
         <rect>
-         <x>-1</x>
-         <y>-1</y>
-         <width>201</width>
-         <height>201</height>
+         <x>5</x>
+         <y>5</y>
+         <width>220</width>
+         <height>190</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -86,12 +104,13 @@ border: 1px solid white;
          <rect>
           <x>20</x>
           <y>30</y>
-          <width>61</width>
+          <width>81</width>
           <height>16</height>
          </rect>
         </property>
         <property name="font">
          <font>
+          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -109,12 +128,13 @@ border: 1px solid white;
          <rect>
           <x>20</x>
           <y>60</y>
-          <width>71</width>
+          <width>81</width>
           <height>16</height>
          </rect>
         </property>
         <property name="font">
          <font>
+          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -132,12 +152,13 @@ border: 1px solid white;
          <rect>
           <x>20</x>
           <y>90</y>
-          <width>49</width>
+          <width>71</width>
           <height>16</height>
          </rect>
         </property>
         <property name="font">
          <font>
+          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -153,13 +174,13 @@ border: 1px solid white;
          <string>Offset</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_degrau_amplitude_2">
+       <widget class="QLineEdit" name="lineEdit_periodica_amplitude">
         <property name="enabled">
          <bool>true</bool>
         </property>
         <property name="geometry">
          <rect>
-          <x>100</x>
+          <x>120</x>
           <y>30</y>
           <width>71</width>
           <height>21</height>
@@ -172,13 +193,13 @@ border-radius: 5px;
 }</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_degrau_amplitude_3">
+       <widget class="QLineEdit" name="lineEdit_periodica_frequencia">
         <property name="enabled">
          <bool>true</bool>
         </property>
         <property name="geometry">
          <rect>
-          <x>100</x>
+          <x>120</x>
           <y>60</y>
           <width>71</width>
           <height>21</height>
@@ -191,13 +212,13 @@ border-radius: 5px;
 }</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_degrau_amplitude_4">
+       <widget class="QLineEdit" name="lineEdit_periodica_offset">
         <property name="enabled">
          <bool>true</bool>
         </property>
         <property name="geometry">
          <rect>
-          <x>100</x>
+          <x>120</x>
           <y>90</y>
           <width>71</width>
           <height>21</height>
@@ -210,11 +231,11 @@ border-radius: 5px;
 }</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="pushButton_periodica">
         <property name="geometry">
          <rect>
-          <x>60</x>
-          <y>130</y>
+          <x>70</x>
+          <y>140</y>
           <width>75</width>
           <height>24</height>
          </rect>
@@ -225,7 +246,7 @@ border: 1px solid gray;
 border-radius: 5px;
 color: white;
 }
-QPushButton#pushButton:pressed {
+QPushButton#pushButton_periodica:pressed {
     background-color: gray;
 	color:white;
 }</string>
@@ -240,10 +261,10 @@ QPushButton#pushButton:pressed {
       <widget class="QFrame" name="frame_aleatoria">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>-1</y>
-         <width>201</width>
-         <height>201</height>
+         <x>5</x>
+         <y>5</y>
+         <width>220</width>
+         <height>190</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -270,12 +291,13 @@ color: white;
          <rect>
           <x>13</x>
           <y>22</y>
-          <width>91</width>
+          <width>111</width>
           <height>16</height>
          </rect>
         </property>
         <property name="font">
          <font>
+          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -289,7 +311,7 @@ color: white;
         </property>
         <property name="geometry">
          <rect>
-          <x>109</x>
+          <x>130</x>
           <y>20</y>
           <width>71</width>
           <height>21</height>
@@ -307,12 +329,13 @@ border-radius: 5px;
          <rect>
           <x>13</x>
           <y>54</y>
-          <width>91</width>
+          <width>111</width>
           <height>16</height>
          </rect>
         </property>
         <property name="font">
          <font>
+          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -326,7 +349,7 @@ border-radius: 5px;
         </property>
         <property name="geometry">
          <rect>
-          <x>110</x>
+          <x>130</x>
           <y>53</y>
           <width>71</width>
           <height>21</height>
@@ -345,7 +368,7 @@ border-radius: 5px;
         </property>
         <property name="geometry">
          <rect>
-          <x>109</x>
+          <x>130</x>
           <y>85</y>
           <width>71</width>
           <height>21</height>
@@ -363,17 +386,21 @@ border-radius: 5px;
          <rect>
           <x>13</x>
           <y>87</y>
-          <width>91</width>
+          <width>111</width>
           <height>16</height>
          </rect>
         </property>
         <property name="font">
          <font>
+          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
         <property name="text">
-         <string>Amplitude Max</string>
+         <string>Periodo Max</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
        <widget class="QLineEdit" name="lineEdit_aleatoria_PMin">
@@ -382,7 +409,7 @@ border-radius: 5px;
         </property>
         <property name="geometry">
          <rect>
-          <x>109</x>
+          <x>130</x>
           <y>117</y>
           <width>71</width>
           <height>21</height>
@@ -400,12 +427,13 @@ border-radius: 5px;
          <rect>
           <x>13</x>
           <y>119</y>
-          <width>91</width>
+          <width>111</width>
           <height>16</height>
          </rect>
         </property>
         <property name="font">
          <font>
+          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -413,13 +441,19 @@ border-radius: 5px;
          <string notr="true">border: 0px solid black;</string>
         </property>
         <property name="text">
-         <string>Amplitude Max</string>
+         <string>Periodo Min</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="pushButton_aleatoria">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="geometry">
          <rect>
-          <x>60</x>
+          <x>70</x>
           <y>150</y>
           <width>75</width>
           <height>24</height>
@@ -429,8 +463,9 @@ border-radius: 5px;
          <string notr="true">QPushButton{
 border: 1px solid gray;
 border-radius: 5px;
+color: white;
 }
-QPushButton#pushButton_3:pressed {
+QPushButton#pushButton_aleatoria:pressed {
     background-color: gray;
 	color:white;
 }</string>
@@ -445,10 +480,10 @@ QPushButton#pushButton_3:pressed {
       <widget class="QFrame" name="frame_degrau">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>201</width>
-         <height>201</height>
+         <x>5</x>
+         <y>5</y>
+         <width>220</width>
+         <height>190</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -463,7 +498,7 @@ QPushButton#pushButton_3:pressed {
        <widget class="QLabel" name="label_degrau_amplitude">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>20</x>
           <y>70</y>
           <width>81</width>
           <height>20</height>
@@ -471,6 +506,7 @@ QPushButton#pushButton_3:pressed {
         </property>
         <property name="font">
          <font>
+          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -489,7 +525,7 @@ QPushButton#pushButton_3:pressed {
        <widget class="QLineEdit" name="lineEdit_degrau_amplitude">
         <property name="geometry">
          <rect>
-          <x>90</x>
+          <x>110</x>
           <y>70</y>
           <width>81</width>
           <height>21</height>
@@ -502,10 +538,10 @@ border-radius: 5px;
 }</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="pushButton_degrau">
         <property name="geometry">
          <rect>
-          <x>60</x>
+          <x>72</x>
           <y>120</y>
           <width>75</width>
           <height>24</height>
@@ -517,7 +553,7 @@ color:white;
 border: 1px solid gray;
 border-radius: 5px;
 }
-QPushButton#pushButton_2:pressed {
+QPushButton#pushButton_degrau:pressed {
     background-color: gray;
 	color:white;
 }</string>
@@ -533,13 +569,13 @@ QPushButton#pushButton_2:pressed {
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>120</y>
-       <width>201</width>
+       <y>90</y>
+       <width>231</width>
        <height>91</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">border: 2px solid gray;</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -550,14 +586,15 @@ QPushButton#pushButton_2:pressed {
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>22</x>
         <y>20</y>
-        <width>91</width>
+        <width>100</width>
         <height>20</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -568,10 +605,10 @@ QPushButton#pushButton_2:pressed {
        <string>Tipo de Malha</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox">
+     <widget class="QComboBox" name="comboBox_malha">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>130</x>
         <y>20</y>
         <width>91</width>
         <height>22</height>
@@ -598,14 +635,15 @@ QPushButton#pushButton_2:pressed {
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>23</x>
         <y>50</y>
-        <width>91</width>
+        <width>101</width>
         <height>21</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -616,10 +654,10 @@ QPushButton#pushButton_2:pressed {
        <string>Tipo de Onda</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_2">
+     <widget class="QComboBox" name="comboBox_onda">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>130</x>
         <y>50</y>
         <width>91</width>
         <height>21</height>
@@ -662,43 +700,14 @@ QPushButton#pushButton_2:pressed {
     <widget class="QWidget" name="widget_ploter" native="true">
      <property name="geometry">
       <rect>
-       <x>250</x>
-       <y>70</y>
+       <x>280</x>
+       <y>30</y>
        <width>711</width>
        <height>451</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">border: 1px solid gray;</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_4">
-     <property name="geometry">
-      <rect>
-       <x>880</x>
-       <y>20</y>
-       <width>75</width>
-       <height>24</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-color: white;
-border: 1px solid gray;
-border-radius: 5px;
-}
-QPushButton#pushButton_4:pressed {
-    background-color: gray;
-	color:white;
-}</string>
-     </property>
-     <property name="text">
-      <string>Start</string>
      </property>
     </widget>
    </widget>

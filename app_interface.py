@@ -16,14 +16,19 @@ class JanelaApp(QMainWindow):
         self.graphWidget = self.plotter.get_widget()
         self.graphWidget.setObjectName("graphWidget")
 
-        self.ui.lineEdit_degrau_amplitude_2.setText("10")
-        self.ui.lineEdit_degrau_amplitude_3.setText("0.5")
-        self.ui.lineEdit_degrau_amplitude_4.setText("0")
+        self.ui.lineEdit_periodica_amplitude.setText("10")
+        self.ui.lineEdit_periodica_frequencia.setText("0.5")
+        self.ui.lineEdit_periodica_offset.setText("0")
 
-        self.ui.comboBox_2.currentTextChanged.connect(self.change_wave_widget)
-        self.ui.pushButton_2.clicked.connect(self.setup_step_values)
-        self.ui.pushButton.clicked.connect(self.setup_periodic_values)
-        self.ui.pushButton_3.clicked.connect(self.setup_aleatory_values)
+        self.ui.lineEdit_aleatoria_AMax.setText("10")
+        self.ui.lineEdit_aleatoria_AMin.setText("5")
+        self.ui.lineEdit_aleatoria_PMin.setText("50")
+        self.ui.lineEdit_aleatoria_PMax.setText("100")
+
+        self.ui.comboBox_onda.currentTextChanged.connect(self.change_wave_widget)
+        self.ui.pushButton_degrau.clicked.connect(self.setup_step_values)
+        self.ui.pushButton_periodica.clicked.connect(self.setup_periodic_values)
+        self.ui.pushButton_aleatoria.clicked.connect(self.setup_aleatory_values)
 
     def change_wave_widget(self, value):
 
@@ -38,13 +43,12 @@ class JanelaApp(QMainWindow):
             self.ui.stackedWidget.setCurrentWidget(self.ui.page_aleatoria)
 
     def setup_step_values(self):
-        self.plotter.wave_type = "Degrau"
         self.plotter.amplitude = float(self.ui.lineEdit_degrau_amplitude.text())
 
     def setup_periodic_values(self):
-        self.plotter.amplitude = float(self.ui.lineEdit_degrau_amplitude_2.text())
-        self.plotter.frequency = float(self.ui.lineEdit_degrau_amplitude_3.text())
-        self.plotter.offset = float(self.ui.lineEdit_degrau_amplitude_4.text())
+        self.plotter.amplitude = float(self.ui.lineEdit_periodica_amplitude.text())
+        self.plotter.frequency = float(self.ui.lineEdit_periodica_frequencia.text())
+        self.plotter.offset = float(self.ui.lineEdit_periodica_offset.text())
 
     def setup_aleatory_values(self):
         self.plotter.max_periode = float(self.ui.lineEdit_aleatoria_PMax.text())

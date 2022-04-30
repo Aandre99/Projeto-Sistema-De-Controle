@@ -36,10 +36,10 @@ class DynamicPlotter:
         self.frequency = 0.5
         self.offset = 0
 
-        self.max_value = 0
-        self.min_value = 0
-        self.max_periode = 0
-        self.min_periode = 0
+        self.max_value = 10
+        self.min_value = 5
+        self.max_periode = 150
+        self.min_periode = 50
 
         # PyQtGraph stuff
         self.plt = pg.PlotWidget(widget)
@@ -52,7 +52,7 @@ class DynamicPlotter:
         #if self.started:
 
         self.curve1 = self.plt.plot(self.x_1, self.y_1, pen=(255, 0, 0))
-        self.curve2 = self.plt.plot(self.x_2, self.y_2, pen=(0, 0, 255))
+        self.curve2 = self.plt.plot(self.x_2, self.y_2, pen=(0, 255, 0))
 
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.updateplot)
@@ -72,8 +72,10 @@ class DynamicPlotter:
             return self.square_wave()
         elif self.wave_type == "Serra":
             return self.sawtooth_wave()
+        elif self.wave_type == "Aleatoria":
+            return self.random_wave()
 
-    def senoide_wave(self):
+    def senoide_wave(self): 
         return (
             self.amplitude * np.sin(time.time() * self.frequency * 2 * np.pi)
             + self.offset
@@ -107,7 +109,7 @@ class DynamicPlotter:
     def updateplot(self):
 
         self.databuffer_1.append(self.getdata())
-        self.databuffer_2.append(self.random_wave())
+        self.databuffer_2.append(6 * np.sin(time.time() * 0.7 * 2 * np.pi))
 
         self.y_1[:] = self.databuffer_1
         self.y_2[:] = self.databuffer_2
