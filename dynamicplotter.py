@@ -58,6 +58,10 @@ class DynamicPlotter:
         self.timer.timeout.connect(self.updateplot)
         self.timer.start(self._interval)
 
+        self.time_flag = time.time()
+        self.t_prs = random.uniform(self.time_flag + self.min_periode, self.time_flag + self.max_periode)
+        self.amplitude1 = random.uniform(self.min_value, self.max_value)
+
     def getdata(self):
 
         if self.wave_type == "Degrau":
@@ -91,9 +95,14 @@ class DynamicPlotter:
         return self.amplitude
 
     def random_wave(self):
-        return (
-            5 * np.sin(time.time() * 0.3 * 2 * np.pi)
-        )
+        if self.time_flag >= self.t_prs:
+                self.time_flag = time.time()
+                self.t_prs = random.uniform(self.time_flag + self.min_periode, self.time_flag + self.max_periode)
+                self.amplitude1 = random.uniform(self.min_value, self.max_value)
+        else:
+            self.time_flag = self.time_flag + 1
+        new = self.amplitude1*square(2*np.pi*self.frequency*time.time()) + self.offset
+        return new
 
     def updateplot(self):
 
