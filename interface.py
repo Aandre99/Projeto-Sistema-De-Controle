@@ -12,15 +12,15 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1035, 535)
-        MainWindow.setMinimumSize(QtCore.QSize(1035, 535))
-        MainWindow.setMaximumSize(QtCore.QSize(1035, 535))
+        MainWindow.resize(1105, 671)
+        MainWindow.setMinimumSize(QtCore.QSize(1105, 671))
+        MainWindow.setMaximumSize(QtCore.QSize(1105, 671))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.frame_geral = QtWidgets.QFrame(self.centralwidget)
-        self.frame_geral.setGeometry(QtCore.QRect(-1, -1, 1041, 541))
-        self.frame_geral.setMinimumSize(QtCore.QSize(0, 0))
-        self.frame_geral.setMaximumSize(QtCore.QSize(1041, 611))
+        self.frame_geral.setGeometry(QtCore.QRect(-1, -1, 1111, 691))
+        self.frame_geral.setMinimumSize(QtCore.QSize(1111, 691))
+        self.frame_geral.setMaximumSize(QtCore.QSize(1111, 691))
         self.frame_geral.setStyleSheet(
             "QFrame{\n"
             "color:white;\n"
@@ -34,7 +34,7 @@ class Ui_MainWindow(object):
         self.frame_geral.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_geral.setObjectName("frame_geral")
         self.stackedWidget = QtWidgets.QStackedWidget(self.frame_geral)
-        self.stackedWidget.setGeometry(QtCore.QRect(20, 230, 231, 201))
+        self.stackedWidget.setGeometry(QtCore.QRect(30, 200, 231, 201))
         self.stackedWidget.setStyleSheet("border:0.5px solid gray;")
         self.stackedWidget.setObjectName("stackedWidget")
         self.page_senoide = QtWidgets.QWidget()
@@ -130,7 +130,7 @@ class Ui_MainWindow(object):
         self.frame_aleatoria.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_aleatoria.setObjectName("frame_aleatoria")
         self.label_6 = QtWidgets.QLabel(self.frame_aleatoria)
-        self.label_6.setGeometry(QtCore.QRect(13, 22, 111, 16))
+        self.label_6.setGeometry(QtCore.QRect(16, 22, 111, 16))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -138,13 +138,13 @@ class Ui_MainWindow(object):
         self.label_6.setObjectName("label_6")
         self.lineEdit_aleatoria_AMax = QtWidgets.QLineEdit(self.frame_aleatoria)
         self.lineEdit_aleatoria_AMax.setEnabled(True)
-        self.lineEdit_aleatoria_AMax.setGeometry(QtCore.QRect(130, 20, 71, 21))
+        self.lineEdit_aleatoria_AMax.setGeometry(QtCore.QRect(134, 20, 71, 21))
         self.lineEdit_aleatoria_AMax.setStyleSheet(
             "QLineEdit{\n" "border: 1px solid black;\n" "border-radius: 5px;\n" "}"
         )
         self.lineEdit_aleatoria_AMax.setObjectName("lineEdit_aleatoria_AMax")
         self.label_7 = QtWidgets.QLabel(self.frame_aleatoria)
-        self.label_7.setGeometry(QtCore.QRect(13, 54, 111, 16))
+        self.label_7.setGeometry(QtCore.QRect(16, 54, 111, 16))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -152,20 +152,20 @@ class Ui_MainWindow(object):
         self.label_7.setObjectName("label_7")
         self.lineEdit_aleatoria_AMin = QtWidgets.QLineEdit(self.frame_aleatoria)
         self.lineEdit_aleatoria_AMin.setEnabled(True)
-        self.lineEdit_aleatoria_AMin.setGeometry(QtCore.QRect(130, 53, 71, 21))
+        self.lineEdit_aleatoria_AMin.setGeometry(QtCore.QRect(134, 53, 71, 21))
         self.lineEdit_aleatoria_AMin.setStyleSheet(
             "QLineEdit{\n" "border: 1px solid black;\n" "border-radius: 5px;\n" "}"
         )
         self.lineEdit_aleatoria_AMin.setObjectName("lineEdit_aleatoria_AMin")
         self.lineEdit_aleatoria_PMax = QtWidgets.QLineEdit(self.frame_aleatoria)
         self.lineEdit_aleatoria_PMax.setEnabled(True)
-        self.lineEdit_aleatoria_PMax.setGeometry(QtCore.QRect(130, 85, 71, 21))
+        self.lineEdit_aleatoria_PMax.setGeometry(QtCore.QRect(133, 85, 71, 21))
         self.lineEdit_aleatoria_PMax.setStyleSheet(
             "QLineEdit{\n" "border: 1px solid black;\n" "border-radius: 5px;\n" "}"
         )
         self.lineEdit_aleatoria_PMax.setObjectName("lineEdit_aleatoria_PMax")
         self.label_8 = QtWidgets.QLabel(self.frame_aleatoria)
-        self.label_8.setGeometry(QtCore.QRect(13, 87, 111, 16))
+        self.label_8.setGeometry(QtCore.QRect(17, 87, 111, 16))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -178,13 +178,13 @@ class Ui_MainWindow(object):
         self.label_8.setObjectName("label_8")
         self.lineEdit_aleatoria_PMin = QtWidgets.QLineEdit(self.frame_aleatoria)
         self.lineEdit_aleatoria_PMin.setEnabled(True)
-        self.lineEdit_aleatoria_PMin.setGeometry(QtCore.QRect(130, 117, 71, 21))
+        self.lineEdit_aleatoria_PMin.setGeometry(QtCore.QRect(133, 117, 71, 21))
         self.lineEdit_aleatoria_PMin.setStyleSheet(
             "QLineEdit{\n" "border: 1px solid black;\n" "border-radius: 5px;\n" "}"
         )
         self.lineEdit_aleatoria_PMin.setObjectName("lineEdit_aleatoria_PMin")
         self.label_9 = QtWidgets.QLabel(self.frame_aleatoria)
-        self.label_9.setGeometry(QtCore.QRect(13, 119, 111, 16))
+        self.label_9.setGeometry(QtCore.QRect(18, 120, 111, 16))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -198,7 +198,7 @@ class Ui_MainWindow(object):
         self.label_9.setObjectName("label_9")
         self.pushButton_aleatoria = QtWidgets.QPushButton(self.frame_aleatoria)
         self.pushButton_aleatoria.setEnabled(True)
-        self.pushButton_aleatoria.setGeometry(QtCore.QRect(70, 150, 75, 24))
+        self.pushButton_aleatoria.setGeometry(QtCore.QRect(71, 152, 75, 24))
         self.pushButton_aleatoria.setStyleSheet(
             "QPushButton{\n"
             "border: 1px solid gray;\n"
@@ -253,8 +253,8 @@ class Ui_MainWindow(object):
         self.pushButton_degrau.setObjectName("pushButton_degrau")
         self.stackedWidget.addWidget(self.page_degrau)
         self.frame = QtWidgets.QFrame(self.frame_geral)
-        self.frame.setGeometry(QtCore.QRect(20, 90, 231, 91))
-        self.frame.setStyleSheet("border: 2px solid gray;")
+        self.frame.setGeometry(QtCore.QRect(30, 90, 231, 91))
+        self.frame.setStyleSheet("border: 2px solid white;")
         self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame.setObjectName("frame")
@@ -302,9 +302,70 @@ class Ui_MainWindow(object):
         self.comboBox_onda.addItem("")
         self.comboBox_onda.addItem("")
         self.widget_ploter = QtWidgets.QWidget(self.frame_geral)
-        self.widget_ploter.setGeometry(QtCore.QRect(280, 30, 711, 451))
-        self.widget_ploter.setStyleSheet("border: 1px solid gray;")
+        self.widget_ploter.setGeometry(QtCore.QRect(290, 80, 781, 501))
+        self.widget_ploter.setMinimumSize(QtCore.QSize(781, 501))
+        self.widget_ploter.setMaximumSize(QtCore.QSize(781, 501))
+        self.widget_ploter.setStyleSheet("border: 1px solid white;")
         self.widget_ploter.setObjectName("widget_ploter")
+        self.frame_2 = QtWidgets.QFrame(self.frame_geral)
+        self.frame_2.setGeometry(QtCore.QRect(30, 430, 230, 131))
+        self.frame_2.setStyleSheet(
+            "QFrame{\n"
+            "border: 2px solid white;\n"
+            "}\n"
+            "\n"
+            "QLabel{\n"
+            "border:0px solid gray;\n"
+            "};"
+        )
+        self.frame_2.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_2.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_2.setObjectName("frame_2")
+        self.label_10 = QtWidgets.QLabel(self.frame_2)
+        self.label_10.setGeometry(QtCore.QRect(20, 13, 101, 31))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_10.setFont(font)
+        self.label_10.setObjectName("label_10")
+        self.lineEdit_janela_amost = QtWidgets.QLineEdit(self.frame_2)
+        self.lineEdit_janela_amost.setGeometry(QtCore.QRect(126, 20, 71, 21))
+        self.lineEdit_janela_amost.setStyleSheet(
+            "QLineEdit{\n" "border: 1px solid black;\n" "border-radius: 5px;\n" "}"
+        )
+        self.lineEdit_janela_amost.setObjectName("lineEdit_janela_amost")
+        self.label_11 = QtWidgets.QLabel(self.frame_2)
+        self.label_11.setGeometry(QtCore.QRect(20, 50, 71, 31))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_11.setFont(font)
+        self.label_11.setObjectName("label_11")
+        self.lineEdit_janela_tam = QtWidgets.QLineEdit(self.frame_2)
+        self.lineEdit_janela_tam.setGeometry(QtCore.QRect(126, 53, 71, 21))
+        self.lineEdit_janela_tam.setStyleSheet(
+            "QLineEdit{\n" "border: 1px solid black;\n" "border-radius: 5px;\n" "}"
+        )
+        self.lineEdit_janela_tam.setObjectName("lineEdit_janela_tam")
+        self.pushButton_window = QtWidgets.QPushButton(self.frame_2)
+        self.pushButton_window.setGeometry(QtCore.QRect(50, 90, 131, 25))
+        font = QtGui.QFont()
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        font.setKerning(True)
+        self.pushButton_window.setFont(font)
+        self.pushButton_window.setStyleSheet(
+            "QPushButton{\n"
+            "border: 1px solid gray;\n"
+            "border-radius: 5px;\n"
+            "color: white;\n"
+            "}\n"
+            "QPushButton#pushButton_window:pressed {\n"
+            "    background-color: gray;\n"
+            "    color:white;\n"
+            "}"
+        )
+        self.pushButton_window.setObjectName("pushButton_window")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -334,6 +395,9 @@ class Ui_MainWindow(object):
         self.comboBox_onda.setItemText(2, _translate("MainWindow", "Quadrada"))
         self.comboBox_onda.setItemText(3, _translate("MainWindow", "Serra"))
         self.comboBox_onda.setItemText(4, _translate("MainWindow", "Aleatoria"))
+        self.label_10.setText(_translate("MainWindow", "Amostragem"))
+        self.label_11.setText(_translate("MainWindow", "Tamanho"))
+        self.pushButton_window.setText(_translate("MainWindow", "Aumentar Janela"))
 
 
 if __name__ == "__main__":

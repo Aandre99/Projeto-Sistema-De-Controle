@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1035</width>
-    <height>535</height>
+    <width>1105</width>
+    <height>671</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1035</width>
-    <height>535</height>
+    <width>1105</width>
+    <height>671</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1035</width>
-    <height>535</height>
+    <width>1105</width>
+    <height>671</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -31,20 +31,20 @@
      <rect>
       <x>-1</x>
       <y>-1</y>
-      <width>1041</width>
-      <height>541</height>
+      <width>1111</width>
+      <height>691</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>0</width>
-      <height>0</height>
+      <width>1111</width>
+      <height>691</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
-      <width>1041</width>
-      <height>611</height>
+      <width>1111</width>
+      <height>691</height>
      </size>
     </property>
     <property name="styleSheet">
@@ -65,8 +65,8 @@ border: 1px solid white;
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>230</y>
+       <x>30</x>
+       <y>200</y>
        <width>231</width>
        <height>201</height>
       </rect>
@@ -289,7 +289,7 @@ color: white;
        <widget class="QLabel" name="label_6">
         <property name="geometry">
          <rect>
-          <x>13</x>
+          <x>16</x>
           <y>22</y>
           <width>111</width>
           <height>16</height>
@@ -311,7 +311,7 @@ color: white;
         </property>
         <property name="geometry">
          <rect>
-          <x>130</x>
+          <x>134</x>
           <y>20</y>
           <width>71</width>
           <height>21</height>
@@ -327,7 +327,7 @@ border-radius: 5px;
        <widget class="QLabel" name="label_7">
         <property name="geometry">
          <rect>
-          <x>13</x>
+          <x>16</x>
           <y>54</y>
           <width>111</width>
           <height>16</height>
@@ -349,7 +349,7 @@ border-radius: 5px;
         </property>
         <property name="geometry">
          <rect>
-          <x>130</x>
+          <x>134</x>
           <y>53</y>
           <width>71</width>
           <height>21</height>
@@ -368,7 +368,7 @@ border-radius: 5px;
         </property>
         <property name="geometry">
          <rect>
-          <x>130</x>
+          <x>133</x>
           <y>85</y>
           <width>71</width>
           <height>21</height>
@@ -384,7 +384,7 @@ border-radius: 5px;
        <widget class="QLabel" name="label_8">
         <property name="geometry">
          <rect>
-          <x>13</x>
+          <x>17</x>
           <y>87</y>
           <width>111</width>
           <height>16</height>
@@ -409,7 +409,7 @@ border-radius: 5px;
         </property>
         <property name="geometry">
          <rect>
-          <x>130</x>
+          <x>133</x>
           <y>117</y>
           <width>71</width>
           <height>21</height>
@@ -425,8 +425,8 @@ border-radius: 5px;
        <widget class="QLabel" name="label_9">
         <property name="geometry">
          <rect>
-          <x>13</x>
-          <y>119</y>
+          <x>18</x>
+          <y>120</y>
           <width>111</width>
           <height>16</height>
          </rect>
@@ -453,8 +453,8 @@ border-radius: 5px;
         </property>
         <property name="geometry">
          <rect>
-          <x>70</x>
-          <y>150</y>
+          <x>71</x>
+          <y>152</y>
           <width>75</width>
           <height>24</height>
          </rect>
@@ -568,14 +568,14 @@ QPushButton#pushButton_degrau:pressed {
     <widget class="QFrame" name="frame">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>30</x>
        <y>90</y>
        <width>231</width>
        <height>91</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border: 2px solid gray;</string>
+      <string notr="true">border: 2px solid white;</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -700,15 +700,153 @@ QPushButton#pushButton_degrau:pressed {
     <widget class="QWidget" name="widget_ploter" native="true">
      <property name="geometry">
       <rect>
-       <x>280</x>
-       <y>30</y>
-       <width>711</width>
-       <height>451</height>
+       <x>290</x>
+       <y>80</y>
+       <width>781</width>
+       <height>501</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>781</width>
+       <height>501</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>781</width>
+       <height>501</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 1px solid white;</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frame_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>430</y>
+       <width>230</width>
+       <height>131</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border: 1px solid gray;</string>
+      <string notr="true">QFrame{
+border: 2px solid white;
+}
+
+QLabel{
+border:0px solid gray;
+};</string>
      </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>13</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Amostragem</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_janela_amost">
+      <property name="geometry">
+       <rect>
+        <x>126</x>
+        <y>20</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+border: 1px solid black;
+border-radius: 5px;
+}</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Tamanho</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_janela_tam">
+      <property name="geometry">
+       <rect>
+        <x>126</x>
+        <y>53</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+border: 1px solid black;
+border-radius: 5px;
+}</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_window">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>90</y>
+        <width>131</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <underline>false</underline>
+        <strikeout>false</strikeout>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: 1px solid gray;
+border-radius: 5px;
+color: white;
+}
+QPushButton#pushButton_window:pressed {
+    background-color: gray;
+	color:white;
+}</string>
+      </property>
+      <property name="text">
+       <string>Aumentar Janela</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
