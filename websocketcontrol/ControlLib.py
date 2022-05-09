@@ -5,144 +5,123 @@ from math import *
 import numpy as np
 import time
 
+
 class Control:
-	def __init__(self, T=0.3, order=3):
-		self.T = T
-		self._e = deque([0]*order)
-		self._u = deque([0]*order)
-		self._y = deque([0]*order)
-		self._r = deque([0]*order)
-		self.currU = 0
-		self.time = 0.0
+    def __init__(self, T=0.3, order=3):
+        self.T = T
+        self._e = deque([0] * order)
+        self._u = deque([0] * order)
+        self._y = deque([0] * order)
+        self._r = deque([0] * order)
+        self.currU = 0
+        self.time = 0.0
 
+    def reference(self, ref):
+        self._r.rotate(-1)
+        self._r[-1] = ref
 
+    def measured(self, y):
 
-	def reference(self, ref):
-		self._r.rotate(-1)
-		self._r[-1] = ref
+        error = self._r[-1] - y
 
+        self._e.rotate(-1)
+        self._e[-1] = error
 
+        self._y.rotate(-1)
+        self._y[-1] = y
 
-	def measured(self, y):
+    def control(self):
 
-		error = self._r[-1] - y
+        return 0
 
-		self._e.rotate(-1)
-		self._e[-1] = error
+    def apply(self, controlSignal):
 
-		self._y.rotate(-1)
-		self._y[-1] = y
+        self._u.rotate(-1)
+        self._u[-1] = controlSignal
 
+    def u(self, index=0):
+        return self._u[index]
 
-	def control(self):
+    def e(self, index=0):
+        return self._e[index - 1]
 
-		return 0
+    def r(self, index=0):
+        return self._r[index - 1]
 
-
-	def apply(self, controlSignal):
-
-		self._u.rotate(-1)
-		self._u[-1] = controlSignal
-
-
-	def u(self, index = 0):
-		return self._u[index]
-	def e(self, index = 0):
-		return self._e[index-1]
-	def r(self, index = 0):
-		return self._r[index-1]
-	def y(self, index = 0):
-		return self._y[index-1]
-
+    def y(self, index=0):
+        return self._y[index - 1]
 
 
 class RemoteControl:
+    def __init__(self, controller, verbose=False):
 
-	def __init__(self, controller, verbose = False):
+        self.controller = controller
+        self.verbose = verbose
 
-		self.controller = controller
-		self.verbose = verbose
+    async def serverLoop(self, websocket, path):
 
+        while True:
+            startTime = time.time()
 
+            await asyncio.sleep(self.controller.T)
 
-	async def serverLoop(self, websocket, path):
+            self.controller.time += self.controller.T
 
-		while True:
-			startTime = time.time()
+            try:
 
-			await asyncio.sleep(self.controller.T)
+                print("get references") if self.verbose else None
+                references = []
+                await websocket.send("get references")
+                received = (await websocket.recv()).split(",")
+                print(received) if self.verbose else None
+                ref = float(received[1])
 
-			self.controller.time += self.controller.T
+                if isnan(ref):
+                    ref = 0.0
 
-			try:
+                print("get outputs") if self.verbose else None
+                outputs = []
+                await websocket.send("get outputs")
+                received = (await websocket.recv()).split(",")
+                print(received) if self.verbose else None
+                out = float(received[1])
 
-				print('get references') if self.verbose else None
-				references = [];
-				await websocket.send('get references')
-				received = (await websocket.recv()).split(',')
-				print(received) if self.verbose else None
-				ref = float(received[1])
+                self.controller.reference(ref)
 
-				if isnan(ref):
-					ref = 0.0
+                self.controller.measured(out)
 
+                u = self.controller.control()
 
-				print('get outputs') if self.verbose else None
-				outputs = [];
-				await websocket.send('get outputs')
-				received = (await websocket.recv()).split(',')
-				print(received) if self.verbose else None
-				out = float(received[1])
+                self.controller.apply(u)
 
+                print(f"u = {u}") if self.verbose else None
+                await websocket.send("set input|" + f"{u}")
 
+                ellapsedTime = 0.0
 
+                while ellapsedTime < self.controller.T:
+                    time.sleep(0.0001)
+                    endTime = time.time()
+                    ellapsedTime = endTime - startTime
 
-				self.controller.reference(ref)
+                print(
+                    "%.4f %.4f %.4f %.4f %.4f, (%.4f)"
+                    % (
+                        self.controller.time,
+                        ref,
+                        out,
+                        u,
+                        self.controller.T,
+                        ellapsedTime,
+                    )
+                )
 
-				self.controller.measured(out)
+            except:
+                print("System not active...") if self.verbose else None
 
-				u = self.controller.control()
+    def run(self):
 
-				self.controller.apply(u)
+        server = websockets.serve(self.serverLoop, "localhost", 6660)
 
-
-
-
-				
-				print(f'u = {u}') if self.verbose else None
-				await websocket.send('set input|'+f"{u}")
-
-
-				ellapsedTime = 0.0
-
-				while ellapsedTime < self.controller.T:
-					time.sleep(0.0001)
-					endTime = time.time()
-					ellapsedTime = endTime - startTime
-
-
-				print('%.4f %.4f %.4f %.4f %.4f, (%.4f)'%(self.controller.time, ref, out, u, self.controller.T, ellapsedTime))				
-
-
-			except:
-				print('System not active...') if self.verbose else None
-
-	def run(self):
-
-		server = websockets.serve(self.serverLoop, "localhost", 6660)
-
-		asyncio.ensure_future(server)
-		asyncio.get_event_loop().run_forever()
-
-
-
-
-
-
-
-
-
-
-
-
-
+        asyncio.ensure_future(server)
+        asyncio.get_event_loop().run_forever()

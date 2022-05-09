@@ -6,13 +6,15 @@ import sys
 
 
 class JanelaApp(QMainWindow):
-    def __init__(self):
+    def __init__(self, buffer_ref):
 
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.plotter = DynamicPlotter(self.ui.widget_ploter, 0.01, timewindow=10)
+        self.plotter = DynamicPlotter(
+            buffer_ref, self.ui.widget_ploter, 0.01, timewindow=10
+        )
         self.graphWidget = self.plotter.get_widget()
         self.graphWidget.setObjectName("graphWidget")
 
@@ -56,12 +58,13 @@ class JanelaApp(QMainWindow):
         self.plotter.min_periode = float(self.ui.lineEdit_aleatoria_PMin.text())
         self.plotter.max_value = float(self.ui.lineEdit_aleatoria_AMax.text())
         self.plotter.max_value = float(self.ui.lineEdit_aleatoria_AMin.text())
-    
+
     def setup_window(self):
         self.plotter.change_window(
             float(self.ui.lineEdit_janela_tam.text()),
-            float(self.ui.lineEdit_janela_amost.text())
+            float(self.ui.lineEdit_janela_amost.text()),
         )
+
 
 if __name__ == "__main__":
 
