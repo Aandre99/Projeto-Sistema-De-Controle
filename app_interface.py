@@ -3,18 +3,18 @@ from PyQt6.QtWidgets import QMainWindow, QApplication
 from interface import Ui_MainWindow
 from dynamicplotter import DynamicPlotter
 import sys
+from PyQt6.QtCore import QThreadPool
+from communication import RemoteControl
 
 
 class JanelaApp(QMainWindow):
-    def __init__(self, buffer_ref):
+    def __init__(self):
 
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.plotter = DynamicPlotter(
-            buffer_ref, self.ui.widget_ploter, 0.01, timewindow=10
-        )
+        self.plotter = DynamicPlotter(self.ui.widget_ploter, 0.01, timewindow=10)
         self.graphWidget = self.plotter.get_widget()
         self.graphWidget.setObjectName("graphWidget")
 
@@ -32,6 +32,11 @@ class JanelaApp(QMainWindow):
         self.ui.pushButton_periodica.clicked.connect(self.setup_periodic_values)
         self.ui.pushButton_aleatoria.clicked.connect(self.setup_aleatory_values)
         self.ui.pushButton_window.clicked.connect(self.setup_window)
+
+        self.server = RemoteControl(verbose=True)
+        self.threadpool = QThreadPool()
+        self.threadpool.start(self.server)
+
 
     def change_wave_widget(self, value):
 
@@ -58,13 +63,12 @@ class JanelaApp(QMainWindow):
         self.plotter.min_periode = float(self.ui.lineEdit_aleatoria_PMin.text())
         self.plotter.max_value = float(self.ui.lineEdit_aleatoria_AMax.text())
         self.plotter.max_value = float(self.ui.lineEdit_aleatoria_AMin.text())
-
+    
     def setup_window(self):
         self.plotter.change_window(
             float(self.ui.lineEdit_janela_tam.text()),
-            float(self.ui.lineEdit_janela_amost.text()),
+            float(self.ui.lineEdit_janela_amost.text())
         )
-
 
 if __name__ == "__main__":
 

@@ -7,12 +7,13 @@ import pyqtgraph as pg
 import collections
 import random
 import time
+import math
 import numpy as np
 from scipy.signal import sawtooth, square
 
 
 class DynamicPlotter:
-    def __init__(self, buffer_ref, widget, sampleinterval=0.1, timewindow=10.0, size=(781, 501)):
+    def __init__(self, widget, sampleinterval=0.1, timewindow=10.0, size=(781, 501)):
         # Data stuff
 
         self.wave_type = "Senoide"
@@ -39,8 +40,6 @@ class DynamicPlotter:
         self.min_value = -5
         self.max_periode = 100
         self.min_periode = 50
-        
-        self.buffer_ref = buffer_ref
 
         # PyQtGraph stuff
         self.plt = pg.PlotWidget(widget)
@@ -104,7 +103,7 @@ class DynamicPlotter:
                 self.amplitude1 = random.uniform(self.min_value, self.max_value)
         else:
             self.time_flag = self.time_flag + 1
-        new = self.amplitude1*square(2*np.pi*self.frequency*time.time()) + self.offset
+        new = self.amplitude1#*square(2*np.pi*self.frequency*time.time()) + self.offset
         return new
 
     def updateplot(self):
@@ -135,6 +134,8 @@ class DynamicPlotter:
         self.x_2 = np.linspace(0, newSize, self._bufsize)
         self.y_2 = np.zeros(self._bufsize, dtype=float)
 
+        #self.timer = QtCore.QTimer()
+        #self.timer.timeout.connect(self.updateplot)
         self.timer.start(self._interval)
 
     def get_widget(self):
