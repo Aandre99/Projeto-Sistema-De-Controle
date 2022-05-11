@@ -3,6 +3,7 @@ from PyQt6.QtWidgets import QMainWindow, QApplication
 from interface import Ui_MainWindow
 from dynamicplotter import DynamicPlotter
 import sys
+import os
 from PyQt6.QtCore import QThreadPool
 from communication import RemoteControl
 
@@ -33,7 +34,7 @@ class JanelaApp(QMainWindow):
         self.ui.pushButton_aleatoria.clicked.connect(self.setup_aleatory_values)
         self.ui.pushButton_window.clicked.connect(self.setup_window)
 
-        self.server = RemoteControl(verbose=True)
+        self.server = RemoteControl(dynamicplotter = self.plotter, verbose=True)
         self.threadpool = QThreadPool()
         self.threadpool.start(self.server)
 
@@ -69,6 +70,9 @@ class JanelaApp(QMainWindow):
             float(self.ui.lineEdit_janela_tam.text()),
             float(self.ui.lineEdit_janela_amost.text())
         )
+    
+    def closeEvent(self,event):
+        os._exit(1)
 
 if __name__ == "__main__":
 

@@ -11,9 +11,10 @@ class RemoteControl(QRunnable):
     T = 0.01
     time = 0
     
-    def __init__(self, verbose = False):
+    def __init__(self, dynamicplotter, verbose = False):
         super().__init__()
         self.verbose = verbose
+        self.dynamicplotter = dynamicplotter
         
     async def serverLoop(self, websocket, path):
         
@@ -25,23 +26,24 @@ class RemoteControl(QRunnable):
             self.time += self.T
 
             try:
-                print('get references') if self.verbose else None
+                # print('get references') if self.verbose else None
                 references = []
                 await websocket.send('get references')
                 received = (await websocket.recv()).split(',')
-                print(received) if self.verbose else None
+                # print(received) if self.verbose else None
                 ref = float(received[1])
 
                 if isnan(ref):
                     ref = 0.0
 
 
-                print('get outputs') if self.verbose else None
+                # print('get outputs') if self.verbose else None
                 outputs = []
                 await websocket.send('get outputs')
                 received = (await websocket.recv()).split(',')
-                print(received) if self.verbose else None
-                out = float(received[1])
+                # print(received) if self.verbose else None
+                out1 = float(received[1])
+                out2 = float(received[2])
 				
 				# print(f'u = {u}') if self.verbose else None
 				# await websocket.send('set input|'+f"{u}")
@@ -53,6 +55,7 @@ class RemoteControl(QRunnable):
                     endTime = time.time()
                     ellapsedTime = endTime - startTime
 
+                self.dynamicplotter.updateplot_communication(ref,out1,out2,time)
 
 				# print('%.4f %.4f %.4f %.4f %.4f, (%.4f)'%(self.controller.time, ref, out, u, self.controller.T, ellapsedTime))				
 
