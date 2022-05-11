@@ -1,5 +1,6 @@
 # source https://github.com/ap--/python-live-plotting/blob/master/plot_pyqtgraph.py
 
+from pkgutil import get_data
 from pyqtgraph.Qt import QtGui, QtCore
 from PyQt6.QtWidgets import QApplication
 import pyqtgraph as pg
@@ -43,6 +44,8 @@ class DynamicPlotter:
         self.max_periode = 100
         self.min_periode = 50
 
+        self.current_ref_value = 0
+
         # PyQtGraph stuff
         self.plt = pg.PlotWidget(widget)
         self.plt.resize(*size)
@@ -65,43 +68,43 @@ class DynamicPlotter:
         self.t_prs = random.uniform(self.time_flag + self.min_periode, self.time_flag + self.max_periode)
         self.amplitude1 = random.uniform(self.min_value, self.max_value)
 
-    def getdata(self):
+    def getdata(self, t):
 
         if self.wave_type == "Degrau":
-            return self.step_wave()
+            return self.step_wave(t)
         elif self.wave_type == "Senoide":
-            return self.senoide_wave()
+            return self.senoide_wave(t)
         elif self.wave_type == "Quadrada":
-            return self.square_wave()
+            return self.square_wave(t)
         elif self.wave_type == "Serra":
-            return self.sawtooth_wave()
+            return self.sawtooth_wave(t)
         elif self.wave_type == "Aleatoria":
-            return self.random_wave()
+            return self.random_wave(t)
 
-    def senoide_wave(self): 
+    def senoide_wave(self, t): 
         return (
-            self.amplitude * np.sin(time.time() * self.frequency * 2 * np.pi)
+            self.amplitude * np.sin(t * self.frequency * 2 * np.pi)
             + self.offset
         )
 
-    def square_wave(self):
+    def square_wave(self, t):
         return (
-            self.amplitude * square(time.time() * self.frequency * 2 * np.pi)
+            self.amplitude * square(t * self.frequency * 2 * np.pi)
             + self.offset
         )
 
-    def sawtooth_wave(self):
+    def sawtooth_wave(self, t):
         return (
-            self.amplitude * sawtooth(time.time() * self.frequency * 2 * np.pi)
+            self.amplitude * sawtooth(t * self.frequency * 2 * np.pi)
             + self.offset
         )
 
-    def step_wave(self):
+    def step_wave(self, t):
         return self.amplitude
 
-    def random_wave(self):
+    def random_wave(self, t):
         if self.time_flag >= self.t_prs:
-                self.time_flag = time.time()
+                self.time_flag = t
                 self.t_prs = random.uniform(self.time_flag + self.min_periode, self.time_flag + self.max_periode)
                 self.amplitude1 = random.uniform(self.min_value, self.max_value)
         else:
@@ -124,8 +127,9 @@ class DynamicPlotter:
         #self.x_2 = self.x_2 + 0.005
     
     def updateplot_communication(self, ref, out1, out2, time):
-
-        self.databuffer_ref.append(ref)
+        
+        self.current_ref_value = self.getdata(time)
+        self.databuffer_ref.append(self.current_ref_value)
         self.databuffer_output1.append(out1)
         self.databuffer_output2.append(out2)
 
@@ -145,6 +149,9 @@ class DynamicPlotter:
         # self.databuffer_output1.append(time.time())
         # self.y_out1[:] = self.databuffer_output1
         # self.curve_out1.setData(self.x_out1, self.y_out1)
+
+    def get_ref_value(self):
+        return self.current_ref_value
 
 
     def change_window(self, newSize, sampleRate):
