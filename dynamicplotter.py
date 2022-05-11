@@ -22,13 +22,15 @@ class DynamicPlotter:
         self._bufsize = int(timewindow / sampleinterval)
 
         self.databuffer_1 = collections.deque([0.0] * self._bufsize, self._bufsize)
-        #self.databuffer_2 = collections.deque([0.0] * self._bufsize, self._bufsize)
+        self.databuffer_ref = collections.deque([0.0] * self._bufsize, self._bufsize)
+        self.databuffer_output1 = collections.deque([0.0] * self._bufsize, self._bufsize)
+        self.databuffer_output2 = collections.deque([0.0] * self._bufsize, self._bufsize)
 
         self.x_1 = np.linspace(0, timewindow, self._bufsize)
         self.y_1 = np.zeros(self._bufsize, dtype=float)
 
-        #self.x_2 = np.linspace(0, timewindow, self._bufsize)
-        #self.y_2 = np.zeros(self._bufsize, dtype=float)
+        self.x_out1 = np.linspace(0, timewindow, self._bufsize)
+        self.y_out1 = np.zeros(self._bufsize, dtype=float)
 
         # variables
 
@@ -52,7 +54,7 @@ class DynamicPlotter:
         #if self.started:
 
         self.curve1 = self.plt.plot(self.x_1, self.y_1, pen=(255, 0, 0))
-        #self.curve2 = self.plt.plot(self.x_2, self.y_2, pen=(0, 255, 0))
+        self.curve_out1 = self.plt.plot(self.x_out1, self.y_out1, pen=(0, 255, 0))
 
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.updateplot)
@@ -103,7 +105,7 @@ class DynamicPlotter:
                 self.amplitude1 = random.uniform(self.min_value, self.max_value)
         else:
             self.time_flag = self.time_flag + 1
-        new = self.amplitude1#*square(2*np.pi*self.frequency*time.time()) + self.offset
+        new = self.amplitude1
         return new
 
     def updateplot(self):
@@ -119,6 +121,16 @@ class DynamicPlotter:
 
         #self.x_1 = self.x_1 + 0.005
         #self.x_2 = self.x_2 + 0.005
+    
+    def updateplot_communication(self,ref,out1,out2,time):
+        # reference = float(ref[1])
+        # output1 = float(out[1])
+        # output2 = float(out[2])
+        print(ref,out1,out2)
+        # self.databuffer_output1.append(time.time())
+        # self.y_out1[:] = self.databuffer_output1
+        # self.curve_out1.setData(self.x_out1, self.y_out1)
+
 
     def change_window(self, newSize, sampleRate):
 
