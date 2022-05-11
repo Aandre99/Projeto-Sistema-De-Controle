@@ -44,7 +44,8 @@ class RemoteControl(QRunnable):
                 # print(received) if self.verbose else None
                 out1 = float(received[1])
                 out2 = float(received[2])
-				
+
+                #self.dynamicplotter.updateplot_communication(ref,out1,out2,time)
 				# print(f'u = {u}') if self.verbose else None
 				# await websocket.send('set input|'+f"{u}")
                 # 
