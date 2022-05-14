@@ -19,6 +19,7 @@ class JanelaApp(QMainWindow):
         self.graphWidget = self.plotter.get_widget()
         self.graphWidget.setObjectName("graphWidget")
 
+        self.ui.lineEdit_degrau_amplitude.setText("10")
         self.ui.lineEdit_periodica_amplitude.setText("10")
         self.ui.lineEdit_periodica_frequencia.setText("0.5")
         self.ui.lineEdit_periodica_offset.setText("0")
@@ -34,10 +35,9 @@ class JanelaApp(QMainWindow):
         self.ui.pushButton_aleatoria.clicked.connect(self.setup_aleatory_values)
         self.ui.pushButton_window.clicked.connect(self.setup_window)
 
-        self.server = RemoteControl(dynamicplotter = self.plotter, verbose=True)
+        self.server = RemoteControl(dynamicplotter=self.plotter, verbose=True)
         self.threadpool = QThreadPool()
         self.threadpool.start(self.server)
-
 
     def change_wave_widget(self, value):
 
@@ -64,15 +64,16 @@ class JanelaApp(QMainWindow):
         self.plotter.min_periode = float(self.ui.lineEdit_aleatoria_PMin.text())
         self.plotter.max_value = float(self.ui.lineEdit_aleatoria_AMax.text())
         self.plotter.max_value = float(self.ui.lineEdit_aleatoria_AMin.text())
-    
+
     def setup_window(self):
         self.plotter.change_window(
             float(self.ui.lineEdit_janela_tam.text()),
-            float(self.ui.lineEdit_janela_amost.text())
+            float(self.ui.lineEdit_janela_amost.text()),
         )
-    
-    def closeEvent(self,event):
+
+    def closeEvent(self, event):
         os._exit(1)
+
 
 if __name__ == "__main__":
 

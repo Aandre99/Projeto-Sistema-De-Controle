@@ -15,25 +15,25 @@ from scipy.signal import sawtooth, square
 
 class DynamicPlotter:
     def __init__(self, widget, sampleinterval=0.1, timewindow=10.0, size=(781, 501)):
-        # Data stuff
 
         self.wave_type = "Senoide"
         self._interval = int(sampleinterval * 1000)
 
         self._bufsize = int(timewindow / sampleinterval)
 
-        #self.databuffer_1 = collections.deque([0.0] * self._bufsize, self._bufsize)
         self.databuffer_ref = collections.deque([0.0] * self._bufsize, self._bufsize)
-        self.databuffer_output1 = collections.deque([0.0] * self._bufsize, self._bufsize)
-        self.databuffer_output2 = collections.deque([0.0] * self._bufsize, self._bufsize)
+        self.databuffer_output1 = collections.deque(
+            [0.0] * self._bufsize, self._bufsize
+        )
+        self.databuffer_output2 = collections.deque(
+            [0.0] * self._bufsize, self._bufsize
+        )
 
         self.x = np.linspace(0, timewindow, self._bufsize)
+
         self.y_ref = np.zeros(self._bufsize, dtype=float)
-        #self.x_out1 = np.linspace(0, timewindow, self._bufsize)
         self.y_out1 = np.zeros(self._bufsize, dtype=float)
         self.y_out2 = np.zeros(self._bufsize, dtype=float)
-
-        # variables
 
         self.amplitude = 10
         self.frequency = 0.5
@@ -46,26 +46,20 @@ class DynamicPlotter:
 
         self.current_ref_value = 0
 
-        # PyQtGraph stuff
         self.plt = pg.PlotWidget(widget)
         self.plt.resize(*size)
         self.plt.showGrid(x=True, y=True)
         self.plt.setLabel("left", "amplitude", "V")
         self.plt.setLabel("bottom", "time", "s")
-       
-        # QTimer
-        #if self.started:
 
         self.curve_ref = self.plt.plot(self.x, self.y_ref, pen=(255, 0, 0))
         self.curve_out1 = self.plt.plot(self.x, self.y_out1, pen=(0, 255, 0))
         self.curve_out2 = self.plt.plot(self.x, self.y_out2, pen=(0, 0, 255))
 
-        #self.timer = QtCore.QTimer()
-        #self.timer.timeout.connect(self.updateplot)
-        #self.timer.start(self._interval)
-
         self.time_flag = time.time()
-        self.t_prs = random.uniform(self.time_flag + self.min_periode, self.time_flag + self.max_periode)
+        self.t_prs = random.uniform(
+            self.time_flag + self.min_periode, self.time_flag + self.max_periode
+        )
         self.amplitude1 = random.uniform(self.min_value, self.max_value)
 
     def getdata(self, t):
@@ -81,53 +75,32 @@ class DynamicPlotter:
         elif self.wave_type == "Aleatoria":
             return self.random_wave(t)
 
-    def senoide_wave(self, t): 
-        return (
-            self.amplitude * np.sin(t * self.frequency * 2 * np.pi)
-            + self.offset
-        )
+    def senoide_wave(self, t):
+        return self.amplitude * np.sin(t * self.frequency * 2 * np.pi) + self.offset
 
     def square_wave(self, t):
-        return (
-            self.amplitude * square(t * self.frequency * 2 * np.pi)
-            + self.offset
-        )
+        return self.amplitude * square(t * self.frequency * 2 * np.pi) + self.offset
 
     def sawtooth_wave(self, t):
-        return (
-            self.amplitude * sawtooth(t * self.frequency * 2 * np.pi)
-            + self.offset
-        )
+        return self.amplitude * sawtooth(t * self.frequency * 2 * np.pi) + self.offset
 
     def step_wave(self, t):
         return self.amplitude
 
     def random_wave(self, t):
         if self.time_flag >= self.t_prs:
-                self.time_flag = t
-                self.t_prs = random.uniform(self.time_flag + self.min_periode, self.time_flag + self.max_periode)
-                self.amplitude1 = random.uniform(self.min_value, self.max_value)
+            self.time_flag = t
+            self.t_prs = random.uniform(
+                self.time_flag + self.min_periode, self.time_flag + self.max_periode
+            )
+            self.amplitude1 = random.uniform(self.min_value, self.max_value)
         else:
             self.time_flag = self.time_flag + 1
         new = self.amplitude1
         return new
 
-    def updateplot(self):
-
-        #self.databuffer_1.append(self.getdata())
-        #self.databuffer_2.append(6 * np.sin(time.time() * 0.7 * 2 * np.pi))
-
-        #self.y_1[:] = self.databuffer_1
-        #self.y_2[:] = self.databuffer_2
-        pass
-        #self.curve1.setData(self.x_1, self.y_1)
-        #self.curve2.setData(self.x_2, self.y_2)
-
-        #self.x_1 = self.x_1 + 0.005
-        #self.x_2 = self.x_2 + 0.005
-    
     def updateplot_communication(self, ref, out1, out2, time):
-        
+
         self.current_ref_value = self.getdata(time)
         self.databuffer_ref.append(self.current_ref_value)
         self.databuffer_output1.append(out1)
@@ -141,36 +114,8 @@ class DynamicPlotter:
         self.curve_out1.setData(self.x, self.y_out1)
         self.curve_out2.setData(self.x, self.y_out2)
 
-
-        # reference = float(ref[1])
-        # output1 = float(out[1])
-        # output2 = float(out[2])
-        #print(ref,out1,out2)
-        # self.databuffer_output1.append(time.time())
-        # self.y_out1[:] = self.databuffer_output1
-        # self.curve_out1.setData(self.x_out1, self.y_out1)
-
     def get_ref_value(self):
         return self.current_ref_value
-
-
-    def change_window(self, newSize, sampleRate):
-
-        self._interval = int(sampleRate * 1000)
-        self._bufsize = int(newSize / sampleRate)
-
-        self.databuffer_1 = collections.deque([0.0] * self._bufsize, self._bufsize)
-        self.databuffer_2 = collections.deque([0.0] * self._bufsize, self._bufsize)
-
-        self.x_1 = np.linspace(0, newSize, self._bufsize)
-        self.y_1 = np.zeros(self._bufsize, dtype=float)
-
-        self.x_2 = np.linspace(0, newSize, self._bufsize)
-        self.y_2 = np.zeros(self._bufsize, dtype=float)
-
-        #self.timer = QtCore.QTimer()
-        #self.timer.timeout.connect(self.updateplot)
-        self.timer.start(self._interval)
 
     def get_widget(self):
         return self.plt
