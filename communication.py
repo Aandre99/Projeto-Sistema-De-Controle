@@ -41,9 +41,10 @@ class RemoteControl(QRunnable):
 
                 await websocket.send("get outputs")
                 received = (await websocket.recv()).split(",")
+                print(received)
 
-                out1 = float(received[1])
-                out2 = float(received[2])
+                out1 = float(received[2])
+                out2 = float(received[1])
 
                 ellapsedTime = 0.0
                 while ellapsedTime < self.T:
@@ -51,9 +52,7 @@ class RemoteControl(QRunnable):
                     endTime = time.time()
                     ellapsedTime = endTime - startTime
 
-                self.dynamicplotter.updateplot_communication(
-                    ref, out1, out2, self.time1
-                )
+                self.dynamicplotter.updateplot_communication(out1, out2, self.time1)
 
             except Exception as e:
                 print(e)

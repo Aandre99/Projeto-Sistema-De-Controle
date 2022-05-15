@@ -851,10 +851,10 @@ QPushButton#pushButton_window:pressed {
     <widget class="QFrame" name="frame_checkboxes">
      <property name="geometry">
       <rect>
-       <x>400</x>
-       <y>600</y>
-       <width>581</width>
-       <height>41</height>
+       <x>460</x>
+       <y>605</y>
+       <width>401</width>
+       <height>40</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -885,6 +885,9 @@ border: 0px solid gray;</string>
       <property name="text">
        <string>Saida Bloco 1</string>
       </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_bloco2">
       <property name="geometry">
@@ -902,28 +905,14 @@ border: 0px solid gray;</string>
       <property name="text">
        <string>Saida Bloco 2</string>
       </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_carrinho">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>10</y>
-        <width>131</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: white;
-border: 0px solid gray;</string>
-      </property>
-      <property name="text">
-       <string>Saida Carrinho</string>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_referencia">
       <property name="geometry">
        <rect>
-        <x>440</x>
+        <x>280</x>
         <y>10</y>
         <width>111</width>
         <height>20</height>
@@ -935,6 +924,9 @@ border: 0px solid gray;</string>
       </property>
       <property name="text">
        <string>Referência</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>

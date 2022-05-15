@@ -22,9 +22,6 @@ class DynamicPlotter:
         self._bufsize = int(timewindow / sampleinterval)
 
         self.databuffer_ref_IN = collections.deque([0.0] * self._bufsize, self._bufsize)
-        self.databuffer_ref_OUT = collections.deque(
-            [0.0] * self._bufsize, self._bufsize
-        )
         self.databuffer_output1 = collections.deque(
             [0.0] * self._bufsize, self._bufsize
         )
@@ -35,12 +32,10 @@ class DynamicPlotter:
         self.x = np.linspace(0, timewindow, self._bufsize)
 
         self.y_ref_IN = np.zeros(self._bufsize, dtype=float)
-        self.y_ref_OUT = np.zeros(self._bufsize, dtype=float)
         self.y_out1 = np.zeros(self._bufsize, dtype=float)
         self.y_out2 = np.zeros(self._bufsize, dtype=float)
 
         self.plotRefIN = 0
-        self.plotRefOUT = 0
         self.plotOut1 = 0
         self.plotOut2 = 0
 
@@ -62,7 +57,6 @@ class DynamicPlotter:
         self.plt.setLabel("bottom", "time", "s")
 
         self.curve_ref_IN = self.plt.plot(self.x, self.y_ref_IN, pen=(255, 255, 0))
-        self.curve_ref_OUT = self.plt.plot(self.x, self.y_ref_OUT, pen=(0, 0, 255))
         self.curve_out1 = self.plt.plot(self.x, self.y_out1, pen=(255, 0, 0))
         self.curve_out2 = self.plt.plot(self.x, self.y_out2, pen=(0, 255, 0))
 
@@ -70,7 +64,6 @@ class DynamicPlotter:
             "b1": [0, self.curve_out1],
             "b2": [0, self.curve_out2],
             "refIN": [0, self.curve_ref_IN],
-            "refOUT": [0, self.curve_ref_OUT],
         }
 
         self.time_flag = time.time()
@@ -116,21 +109,18 @@ class DynamicPlotter:
         new = self.amplitude1
         return new
 
-    def updateplot_communication(self, ref, out1, out2, time):
+    def updateplot_communication(self, out1, out2, time):
 
         self.current_ref_value = self.getdata(time)
         self.databuffer_ref_IN.append(self.current_ref_value)
-        self.databuffer_ref_OUT.append(ref)
         self.databuffer_output1.append(out1)
         self.databuffer_output2.append(out2)
 
         self.y_ref_IN[:] = self.databuffer_ref_IN
-        self.y_ref_OUT[:] = self.databuffer_ref_OUT
         self.y_out1[:] = self.databuffer_output1
         self.y_out2[:] = self.databuffer_output2
 
         self.curve_ref_IN.setData(self.x, self.y_ref_IN)
-        self.curve_ref_OUT.setData(self.x, self.y_ref_OUT)
         self.curve_out1.setData(self.x, self.y_out1)
         self.curve_out2.setData(self.x, self.y_out2)
 
