@@ -366,6 +366,34 @@ class Ui_MainWindow(object):
             "}"
         )
         self.pushButton_window.setObjectName("pushButton_window")
+        self.frame_checkboxes = QtWidgets.QFrame(self.frame_geral)
+        self.frame_checkboxes.setGeometry(QtCore.QRect(400, 600, 581, 41))
+        self.frame_checkboxes.setStyleSheet(
+            "border: 1px solid white;\n" "checkBox{\n" "border: 0px solid gray;\n" "}"
+        )
+        self.frame_checkboxes.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_checkboxes.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_checkboxes.setObjectName("frame_checkboxes")
+        self.checkBox_bloco1 = QtWidgets.QCheckBox(self.frame_checkboxes)
+        self.checkBox_bloco1.setGeometry(QtCore.QRect(20, 10, 111, 20))
+        self.checkBox_bloco1.setStyleSheet("color: white;\n" "border: 0px solid gray;")
+        self.checkBox_bloco1.setObjectName("checkBox_bloco1")
+        self.checkBox_bloco2 = QtWidgets.QCheckBox(self.frame_checkboxes)
+        self.checkBox_bloco2.setGeometry(QtCore.QRect(150, 11, 111, 20))
+        self.checkBox_bloco2.setStyleSheet("color: white;\n" "border: 0px solid gray;")
+        self.checkBox_bloco2.setObjectName("checkBox_bloco2")
+        self.checkBox_carrinho = QtWidgets.QCheckBox(self.frame_checkboxes)
+        self.checkBox_carrinho.setGeometry(QtCore.QRect(280, 10, 131, 20))
+        self.checkBox_carrinho.setStyleSheet(
+            "color: white;\n" "border: 0px solid gray;"
+        )
+        self.checkBox_carrinho.setObjectName("checkBox_carrinho")
+        self.checkBox_referencia = QtWidgets.QCheckBox(self.frame_checkboxes)
+        self.checkBox_referencia.setGeometry(QtCore.QRect(440, 10, 111, 20))
+        self.checkBox_referencia.setStyleSheet(
+            "color: white;\n" "border: 0px solid gray;"
+        )
+        self.checkBox_referencia.setObjectName("checkBox_referencia")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -398,3 +426,18 @@ class Ui_MainWindow(object):
         self.label_10.setText(_translate("MainWindow", "Amostragem"))
         self.label_11.setText(_translate("MainWindow", "Tamanho"))
         self.pushButton_window.setText(_translate("MainWindow", "Aumentar Janela"))
+        self.checkBox_bloco1.setText(_translate("MainWindow", "Saida Bloco 1"))
+        self.checkBox_bloco2.setText(_translate("MainWindow", "Saida Bloco 2"))
+        self.checkBox_carrinho.setText(_translate("MainWindow", "Saida Carrinho"))
+        self.checkBox_referencia.setText(_translate("MainWindow", "Referência"))
+
+
+if __name__ == "__main__":
+    import sys
+
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec())

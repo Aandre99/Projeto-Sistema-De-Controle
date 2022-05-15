@@ -848,6 +848,96 @@ QPushButton#pushButton_window:pressed {
       </property>
      </widget>
     </widget>
+    <widget class="QFrame" name="frame_checkboxes">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>600</y>
+       <width>581</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 1px solid white;
+checkBox{
+border: 0px solid gray;
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QCheckBox" name="checkBox_bloco1">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>111</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+border: 0px solid gray;</string>
+      </property>
+      <property name="text">
+       <string>Saida Bloco 1</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_bloco2">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>11</y>
+        <width>111</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+border: 0px solid gray;</string>
+      </property>
+      <property name="text">
+       <string>Saida Bloco 2</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_carrinho">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>10</y>
+        <width>131</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+border: 0px solid gray;</string>
+      </property>
+      <property name="text">
+       <string>Saida Carrinho</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_referencia">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>10</y>
+        <width>111</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+border: 0px solid gray;</string>
+      </property>
+      <property name="text">
+       <string>Referência</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
  </widget>

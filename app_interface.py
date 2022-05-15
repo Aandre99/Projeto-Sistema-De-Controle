@@ -35,6 +35,19 @@ class JanelaApp(QMainWindow):
         self.ui.pushButton_aleatoria.clicked.connect(self.setup_aleatory_values)
         self.ui.pushButton_window.clicked.connect(self.setup_window)
 
+        self.ui.checkBox_bloco1.stateChanged.connect(
+            lambda x: self.plotter.update_plot_curves("b1")
+        )
+        self.ui.checkBox_bloco2.stateChanged.connect(
+            lambda x: self.plotter.update_plot_curves("b2")
+        )
+        self.ui.checkBox_carrinho.stateChanged.connect(
+            lambda x: self.plotter.update_plot_curves("refOUT")
+        )
+        self.ui.checkBox_referencia.stateChanged.connect(
+            lambda x: self.plotter.update_plot_curves("refIN")
+        )
+
         self.server = RemoteControl(dynamicplotter=self.plotter, verbose=True)
         self.threadpool = QThreadPool()
         self.threadpool.start(self.server)
