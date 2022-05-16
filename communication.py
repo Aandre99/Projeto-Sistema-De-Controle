@@ -25,10 +25,10 @@ class RemoteControl(QRunnable):
             try:
 
                 startTime = time.time()
-                await websocket.send(
-                    "set input|" + f"{float(self.dynamicplotter.get_ref_value())}"
-                )
-                await asyncio.sleep(self.T)
+                # await websocket.send(
+                #    "set input|" + f"{float(self.dynamicplotter.get_ref_value())}"
+                # )
+                # await asyncio.sleep(self.T)
 
                 self.time1 += self.T
 
@@ -41,10 +41,14 @@ class RemoteControl(QRunnable):
 
                 await websocket.send("get outputs")
                 received = (await websocket.recv()).split(",")
-                print(received)
 
                 out1 = float(received[2])
                 out2 = float(received[1])
+
+                await websocket.send(
+                    "set input|" + f"{float(self.dynamicplotter.get_ref_value(out2))}"
+                )
+                await asyncio.sleep(self.T)
 
                 ellapsedTime = 0.0
                 while ellapsedTime < self.T:

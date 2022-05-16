@@ -33,7 +33,6 @@ class JanelaApp(QMainWindow):
         self.ui.pushButton_degrau.clicked.connect(self.setup_step_values)
         self.ui.pushButton_periodica.clicked.connect(self.setup_periodic_values)
         self.ui.pushButton_aleatoria.clicked.connect(self.setup_aleatory_values)
-        self.ui.pushButton_window.clicked.connect(self.setup_window)
 
         self.ui.checkBox_bloco1.stateChanged.connect(
             lambda x: self.plotter.update_plot_curves("b1")
@@ -44,6 +43,8 @@ class JanelaApp(QMainWindow):
         self.ui.checkBox_referencia.stateChanged.connect(
             lambda x: self.plotter.update_plot_curves("refIN")
         )
+
+        self.ui.comboBox_malha.currentTextChanged.connect(self.set_loop_type)
 
         self.server = RemoteControl(dynamicplotter=self.plotter, verbose=True)
         self.threadpool = QThreadPool()
@@ -75,11 +76,8 @@ class JanelaApp(QMainWindow):
         self.plotter.max_value = float(self.ui.lineEdit_aleatoria_AMax.text())
         self.plotter.max_value = float(self.ui.lineEdit_aleatoria_AMin.text())
 
-    def setup_window(self):
-        self.plotter.change_window(
-            float(self.ui.lineEdit_janela_tam.text()),
-            float(self.ui.lineEdit_janela_amost.text()),
-        )
+    def set_loop_type(self, value):
+        self.plotter.type_loop = value
 
     def closeEvent(self, event):
         os._exit(1)

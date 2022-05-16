@@ -14,7 +14,7 @@ from scipy.signal import sawtooth, square
 
 
 class DynamicPlotter:
-    def __init__(self, widget, sampleinterval=0.1, timewindow=10.0, size=(781, 501)):
+    def __init__(self, widget, sampleinterval=0.1, timewindow=20.0, size=(781, 501)):
 
         self.wave_type = "Senoide"
         self._interval = int(sampleinterval * 1000)
@@ -35,9 +35,7 @@ class DynamicPlotter:
         self.y_out1 = np.zeros(self._bufsize, dtype=float)
         self.y_out2 = np.zeros(self._bufsize, dtype=float)
 
-        self.plotRefIN = 0
-        self.plotOut1 = 0
-        self.plotOut2 = 0
+        self.type_loop = "Aberta"
 
         self.amplitude = 10
         self.frequency = 0.5
@@ -132,8 +130,12 @@ class DynamicPlotter:
         else:
             self.plt.addItem(self.plots[curve][1])
 
-    def get_ref_value(self):
-        return self.current_ref_value
+    def get_ref_value(self, out2):
+
+        if self.type_loop == "Aberta":
+            return self.current_ref_value
+        else:
+            return self.current_ref_value - out2
 
     def get_widget(self):
         return self.plt

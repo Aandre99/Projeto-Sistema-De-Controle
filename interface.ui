@@ -66,7 +66,7 @@ border: 1px solid white;
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>200</y>
+       <y>340</y>
        <width>231</width>
        <height>201</height>
       </rect>
@@ -569,7 +569,7 @@ QPushButton#pushButton_degrau:pressed {
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>90</y>
+       <y>170</y>
        <width>231</width>
        <height>91</height>
       </rect>
@@ -721,132 +721,6 @@ QPushButton#pushButton_degrau:pressed {
      <property name="styleSheet">
       <string notr="true">border: 1px solid white;</string>
      </property>
-    </widget>
-    <widget class="QFrame" name="frame_2">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>430</y>
-       <width>230</width>
-       <height>131</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QFrame{
-border: 2px solid white;
-}
-
-QLabel{
-border:0px solid gray;
-};</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QLabel" name="label_10">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>13</y>
-        <width>101</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Amostragem</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_janela_amost">
-      <property name="geometry">
-       <rect>
-        <x>126</x>
-        <y>20</y>
-        <width>71</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLineEdit{
-border: 1px solid black;
-border-radius: 5px;
-}</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_11">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>50</y>
-        <width>71</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Tamanho</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_janela_tam">
-      <property name="geometry">
-       <rect>
-        <x>126</x>
-        <y>53</y>
-        <width>71</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLineEdit{
-border: 1px solid black;
-border-radius: 5px;
-}</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_window">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>90</y>
-        <width>131</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <underline>false</underline>
-        <strikeout>false</strikeout>
-        <kerning>true</kerning>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton{
-border: 1px solid gray;
-border-radius: 5px;
-color: white;
-}
-QPushButton#pushButton_window:pressed {
-    background-color: gray;
-	color:white;
-}</string>
-      </property>
-      <property name="text">
-       <string>Aumentar Janela</string>
-      </property>
-     </widget>
     </widget>
     <widget class="QFrame" name="frame_checkboxes">
      <property name="geometry">
