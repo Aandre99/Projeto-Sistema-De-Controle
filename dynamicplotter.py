@@ -29,6 +29,8 @@ class DynamicPlotter:
             [0.0] * self._bufsize, self._bufsize
         )
 
+        # Buffers
+
         self.x = np.linspace(0, timewindow, self._bufsize)
 
         self.y_ref_IN = np.zeros(self._bufsize, dtype=float)
@@ -36,6 +38,8 @@ class DynamicPlotter:
         self.y_out2 = np.zeros(self._bufsize, dtype=float)
 
         self.type_loop = "Aberta"
+        
+        # Valores para os campos da interface
 
         self.amplitude = 10
         self.frequency = 0.5
@@ -45,6 +49,11 @@ class DynamicPlotter:
         self.min_value = -5
         self.max_periode = 100
         self.min_periode = 50
+
+        self.P = 0
+        self.I = 0
+        self.D = 0
+        self.crtl = "P"
 
         self.current_ref_value = 0
 
@@ -130,12 +139,17 @@ class DynamicPlotter:
         else:
             self.plt.addItem(self.plots[curve][1])
 
-    def get_ref_value(self, out2):
+    def get_ref_value(self, out2, controllers):
 
         if self.type_loop == "Aberta":
             return self.current_ref_value
         else:
-            return self.current_ref_value - out2
+            controllers[self.crtl].set_values(self.P, self.I, self.D)
+            controllers[self.crtl].reference(self.current_ref_value)
+            controllers[self.crtl].measured(out2)
+            u = controllers[self.crtl].control()
+            controllers[self.crtl].apply(u)
+            return u
 
     def get_widget(self):
         return self.plt

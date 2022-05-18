@@ -18,6 +18,10 @@ class JanelaApp(QMainWindow):
         self.plotter = DynamicPlotter(self.ui.widget_ploter, 0.01, timewindow=10)
         self.graphWidget = self.plotter.get_widget()
         self.graphWidget.setObjectName("graphWidget")
+        
+        self.ui.stackedWidget_controladores.setVisible(False)
+        self.ui.frame_controle.setVisible(False)
+        self.ui.pushButton_controle.setVisible(False)
 
         self.ui.lineEdit_degrau_amplitude.setText("10")
         self.ui.lineEdit_periodica_amplitude.setText("10")
@@ -30,9 +34,12 @@ class JanelaApp(QMainWindow):
         self.ui.lineEdit_aleatoria_PMax.setText("100")
 
         self.ui.comboBox_onda.currentTextChanged.connect(self.change_wave_widget)
+        self.ui.comboBox_control.currentTextChanged.connect(self.change_controller_widget)
+
         self.ui.pushButton_degrau.clicked.connect(self.setup_step_values)
         self.ui.pushButton_periodica.clicked.connect(self.setup_periodic_values)
         self.ui.pushButton_aleatoria.clicked.connect(self.setup_aleatory_values)
+        self.ui.pushButton_controle.clicked.connect(self.set_control_values)
 
         self.ui.checkBox_bloco1.stateChanged.connect(
             lambda x: self.plotter.update_plot_curves("b1")
@@ -62,6 +69,21 @@ class JanelaApp(QMainWindow):
             self.plotter.wave_type = "Aleatoria"
             self.ui.stackedWidget.setCurrentWidget(self.ui.page_aleatoria)
 
+    def change_controller_widget(self, value):
+
+        self.plotter.crtl = value
+
+        if value == "P":
+            self.ui.stackedWidget_controladores.setCurrentWidget(self.ui.page_P)
+        elif value in ["PI", "PD"]:
+            if value == "PI":
+                self.ui.label_pdpi.setText("Ki")
+            elif value == "PD":
+                self.ui.label_pdpi.setText("Kd")
+            self.ui.stackedWidget_controladores.setCurrentWidget(self.ui.page_PI)
+        else:
+            self.ui.stackedWidget_controladores.setCurrentWidget(self.ui.page_PID)
+
     def setup_step_values(self):
         self.plotter.amplitude = float(self.ui.lineEdit_degrau_amplitude.text())
 
@@ -77,7 +99,30 @@ class JanelaApp(QMainWindow):
         self.plotter.max_value = float(self.ui.lineEdit_aleatoria_AMin.text())
 
     def set_loop_type(self, value):
+        
+        visibleFlag = True if value == "Fechada" else False
+
+        self.ui.frame_controle.setVisible(visibleFlag)
+        self.ui.pushButton_controle.setVisible(visibleFlag)
+        self.ui.stackedWidget_controladores.setVisible(visibleFlag)
         self.plotter.type_loop = value
+
+    def set_control_values(self):
+        
+        ctrl = self.ui.comboBox_control.currentText()
+
+        if ctrl == "P":
+            self.plotter.P = float(self.ui.lineEdit_P.text())
+        elif ctrl in ['PI','PD']:
+            self.plotter.P = float(self.ui.lineEdit_PIPD_kp.text())
+            if "I" in ctrl:
+                self.plotter.I = float(self.ui.lineEdit_PIPD_ki.text())
+            else:
+                self.plotter.D = float(self.ui.lineEdit_PIPD_ki.text())
+        else:
+            self.P = float(self.ui.lineEdit_PID_kp.text())
+            self.I = float(self.ui.lineEdit_PID_ki.text())
+            self.D = float(self.ui.lineEdit_PID_kd.text())
 
     def closeEvent(self, event):
         os._exit(1)

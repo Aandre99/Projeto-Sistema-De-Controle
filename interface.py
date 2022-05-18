@@ -21,21 +21,19 @@ class Ui_MainWindow(object):
         self.frame_geral.setGeometry(QtCore.QRect(-1, -1, 1111, 691))
         self.frame_geral.setMinimumSize(QtCore.QSize(1111, 691))
         self.frame_geral.setMaximumSize(QtCore.QSize(1111, 691))
-        self.frame_geral.setStyleSheet(
-            "QFrame{\n"
-            "color:white;\n"
-            "    background-color: rgb(0, 0, 0);\n"
-            "}\n"
-            "QLineEdit{\n"
-            "border: 1px solid white;\n"
-            "}"
-        )
+        self.frame_geral.setStyleSheet("QFrame{\n"
+"color:white;\n"
+"    background-color: rgb(0, 0, 0);\n"
+"}\n"
+"QLineEdit{\n"
+"border: 1px solid white;\n"
+"}")
         self.frame_geral.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_geral.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_geral.setObjectName("frame_geral")
         self.stackedWidget = QtWidgets.QStackedWidget(self.frame_geral)
-        self.stackedWidget.setGeometry(QtCore.QRect(30, 340, 231, 201))
-        self.stackedWidget.setStyleSheet("border:0.5px solid gray;")
+        self.stackedWidget.setGeometry(QtCore.QRect(30, 230, 231, 201))
+        self.stackedWidget.setStyleSheet("border: 0.5px solid gray;")
         self.stackedWidget.setObjectName("stackedWidget")
         self.page_senoide = QtWidgets.QWidget()
         self.page_senoide.setObjectName("page_senoide")
@@ -52,7 +50,9 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_3.setFont(font)
-        self.label_3.setStyleSheet("QLabel{\n" "    border: 0px solid black;\n" "}")
+        self.label_3.setStyleSheet("QLabel{\n"
+"    border: 0px solid black;\n"
+"}")
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.frame_senoide)
         self.label_4.setGeometry(QtCore.QRect(20, 60, 81, 16))
@@ -60,7 +60,9 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_4.setFont(font)
-        self.label_4.setStyleSheet("QLabel{\n" "    border: 0px solid black;\n" "}")
+        self.label_4.setStyleSheet("QLabel{\n"
+"    border: 0px solid black;\n"
+"}")
         self.label_4.setObjectName("label_4")
         self.label_5 = QtWidgets.QLabel(self.frame_senoide)
         self.label_5.setGeometry(QtCore.QRect(20, 90, 71, 16))
@@ -69,63 +71,62 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_5.setFont(font)
         self.label_5.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        self.label_5.setStyleSheet("QLabel{\n" "    border: 0px solid black;\n" "}")
+        self.label_5.setStyleSheet("QLabel{\n"
+"    border: 0px solid black;\n"
+"}")
         self.label_5.setObjectName("label_5")
         self.lineEdit_periodica_amplitude = QtWidgets.QLineEdit(self.frame_senoide)
         self.lineEdit_periodica_amplitude.setEnabled(True)
         self.lineEdit_periodica_amplitude.setGeometry(QtCore.QRect(120, 30, 71, 21))
-        self.lineEdit_periodica_amplitude.setStyleSheet(
-            "QLineEdit{\n" "border: 1px solid black;\n" "border-radius: 5px;\n" "}"
-        )
+        self.lineEdit_periodica_amplitude.setStyleSheet("QLineEdit{\n"
+"border: 1px solid black;\n"
+"border-radius: 5px;\n"
+"}")
         self.lineEdit_periodica_amplitude.setObjectName("lineEdit_periodica_amplitude")
         self.lineEdit_periodica_frequencia = QtWidgets.QLineEdit(self.frame_senoide)
         self.lineEdit_periodica_frequencia.setEnabled(True)
         self.lineEdit_periodica_frequencia.setGeometry(QtCore.QRect(120, 60, 71, 21))
-        self.lineEdit_periodica_frequencia.setStyleSheet(
-            "QLineEdit{\n" "border: 1px solid black;\n" "border-radius: 5px;\n" "}"
-        )
-        self.lineEdit_periodica_frequencia.setObjectName(
-            "lineEdit_periodica_frequencia"
-        )
+        self.lineEdit_periodica_frequencia.setStyleSheet("QLineEdit{\n"
+"border: 1px solid black;\n"
+"border-radius: 5px;\n"
+"}")
+        self.lineEdit_periodica_frequencia.setObjectName("lineEdit_periodica_frequencia")
         self.lineEdit_periodica_offset = QtWidgets.QLineEdit(self.frame_senoide)
         self.lineEdit_periodica_offset.setEnabled(True)
         self.lineEdit_periodica_offset.setGeometry(QtCore.QRect(120, 90, 71, 21))
-        self.lineEdit_periodica_offset.setStyleSheet(
-            "QLineEdit{\n" "border: 1px solid black;\n" "border-radius: 5px;\n" "}"
-        )
+        self.lineEdit_periodica_offset.setStyleSheet("QLineEdit{\n"
+"border: 1px solid black;\n"
+"border-radius: 5px;\n"
+"}")
         self.lineEdit_periodica_offset.setObjectName("lineEdit_periodica_offset")
         self.pushButton_periodica = QtWidgets.QPushButton(self.frame_senoide)
         self.pushButton_periodica.setGeometry(QtCore.QRect(70, 140, 75, 24))
-        self.pushButton_periodica.setStyleSheet(
-            "QPushButton{\n"
-            "border: 1px solid gray;\n"
-            "border-radius: 5px;\n"
-            "color: white;\n"
-            "}\n"
-            "QPushButton#pushButton_periodica:pressed {\n"
-            "    background-color: gray;\n"
-            "    color:white;\n"
-            "}"
-        )
+        self.pushButton_periodica.setStyleSheet("QPushButton{\n"
+"border: 1px solid gray;\n"
+"border-radius: 5px;\n"
+"color: white;\n"
+"}\n"
+"QPushButton#pushButton_periodica:pressed {\n"
+"    background-color: gray;\n"
+"    color:white;\n"
+"}")
         self.pushButton_periodica.setObjectName("pushButton_periodica")
         self.stackedWidget.addWidget(self.page_senoide)
         self.page_aleatoria = QtWidgets.QWidget()
         self.page_aleatoria.setObjectName("page_aleatoria")
         self.frame_aleatoria = QtWidgets.QFrame(self.page_aleatoria)
         self.frame_aleatoria.setGeometry(QtCore.QRect(5, 5, 220, 190))
-        self.frame_aleatoria.setStyleSheet(
-            "QLabel{\n"
-            "    border: 0px solid gray;\n"
-            "}\n"
-            "\n"
-            ".QPushButton{\n"
-            "color: white;\n"
-            "}\n"
-            ".QPushButton:pressed {\n"
-            "    background-color: black;\n"
-            "    color:white;\n"
-            "}"
-        )
+        self.frame_aleatoria.setStyleSheet("QLabel{\n"
+"    border: 0px solid gray;\n"
+"}\n"
+"\n"
+".QPushButton{\n"
+"color: white;\n"
+"}\n"
+".QPushButton:pressed {\n"
+"    background-color: black;\n"
+"    color:white;\n"
+"}")
         self.frame_aleatoria.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_aleatoria.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_aleatoria.setObjectName("frame_aleatoria")
@@ -139,9 +140,10 @@ class Ui_MainWindow(object):
         self.lineEdit_aleatoria_AMax = QtWidgets.QLineEdit(self.frame_aleatoria)
         self.lineEdit_aleatoria_AMax.setEnabled(True)
         self.lineEdit_aleatoria_AMax.setGeometry(QtCore.QRect(134, 20, 71, 21))
-        self.lineEdit_aleatoria_AMax.setStyleSheet(
-            "QLineEdit{\n" "border: 1px solid black;\n" "border-radius: 5px;\n" "}"
-        )
+        self.lineEdit_aleatoria_AMax.setStyleSheet("QLineEdit{\n"
+"border: 1px solid black;\n"
+"border-radius: 5px;\n"
+"}")
         self.lineEdit_aleatoria_AMax.setObjectName("lineEdit_aleatoria_AMax")
         self.label_7 = QtWidgets.QLabel(self.frame_aleatoria)
         self.label_7.setGeometry(QtCore.QRect(16, 54, 111, 16))
@@ -153,16 +155,18 @@ class Ui_MainWindow(object):
         self.lineEdit_aleatoria_AMin = QtWidgets.QLineEdit(self.frame_aleatoria)
         self.lineEdit_aleatoria_AMin.setEnabled(True)
         self.lineEdit_aleatoria_AMin.setGeometry(QtCore.QRect(134, 53, 71, 21))
-        self.lineEdit_aleatoria_AMin.setStyleSheet(
-            "QLineEdit{\n" "border: 1px solid black;\n" "border-radius: 5px;\n" "}"
-        )
+        self.lineEdit_aleatoria_AMin.setStyleSheet("QLineEdit{\n"
+"border: 1px solid black;\n"
+"border-radius: 5px;\n"
+"}")
         self.lineEdit_aleatoria_AMin.setObjectName("lineEdit_aleatoria_AMin")
         self.lineEdit_aleatoria_PMax = QtWidgets.QLineEdit(self.frame_aleatoria)
         self.lineEdit_aleatoria_PMax.setEnabled(True)
         self.lineEdit_aleatoria_PMax.setGeometry(QtCore.QRect(133, 85, 71, 21))
-        self.lineEdit_aleatoria_PMax.setStyleSheet(
-            "QLineEdit{\n" "border: 1px solid black;\n" "border-radius: 5px;\n" "}"
-        )
+        self.lineEdit_aleatoria_PMax.setStyleSheet("QLineEdit{\n"
+"border: 1px solid black;\n"
+"border-radius: 5px;\n"
+"}")
         self.lineEdit_aleatoria_PMax.setObjectName("lineEdit_aleatoria_PMax")
         self.label_8 = QtWidgets.QLabel(self.frame_aleatoria)
         self.label_8.setGeometry(QtCore.QRect(17, 87, 111, 16))
@@ -170,18 +174,15 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_8.setFont(font)
-        self.label_8.setAlignment(
-            QtCore.Qt.AlignmentFlag.AlignLeading
-            | QtCore.Qt.AlignmentFlag.AlignLeft
-            | QtCore.Qt.AlignmentFlag.AlignVCenter
-        )
+        self.label_8.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.label_8.setObjectName("label_8")
         self.lineEdit_aleatoria_PMin = QtWidgets.QLineEdit(self.frame_aleatoria)
         self.lineEdit_aleatoria_PMin.setEnabled(True)
         self.lineEdit_aleatoria_PMin.setGeometry(QtCore.QRect(133, 117, 71, 21))
-        self.lineEdit_aleatoria_PMin.setStyleSheet(
-            "QLineEdit{\n" "border: 1px solid black;\n" "border-radius: 5px;\n" "}"
-        )
+        self.lineEdit_aleatoria_PMin.setStyleSheet("QLineEdit{\n"
+"border: 1px solid black;\n"
+"border-radius: 5px;\n"
+"}")
         self.lineEdit_aleatoria_PMin.setObjectName("lineEdit_aleatoria_PMin")
         self.label_9 = QtWidgets.QLabel(self.frame_aleatoria)
         self.label_9.setGeometry(QtCore.QRect(18, 120, 111, 16))
@@ -190,26 +191,20 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_9.setFont(font)
         self.label_9.setStyleSheet("border: 0px solid black;")
-        self.label_9.setAlignment(
-            QtCore.Qt.AlignmentFlag.AlignLeading
-            | QtCore.Qt.AlignmentFlag.AlignLeft
-            | QtCore.Qt.AlignmentFlag.AlignVCenter
-        )
+        self.label_9.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.label_9.setObjectName("label_9")
         self.pushButton_aleatoria = QtWidgets.QPushButton(self.frame_aleatoria)
         self.pushButton_aleatoria.setEnabled(True)
         self.pushButton_aleatoria.setGeometry(QtCore.QRect(71, 152, 75, 24))
-        self.pushButton_aleatoria.setStyleSheet(
-            "QPushButton{\n"
-            "border: 1px solid gray;\n"
-            "border-radius: 5px;\n"
-            "color: white;\n"
-            "}\n"
-            "QPushButton#pushButton_aleatoria:pressed {\n"
-            "    background-color: gray;\n"
-            "    color:white;\n"
-            "}"
-        )
+        self.pushButton_aleatoria.setStyleSheet("QPushButton{\n"
+"border: 1px solid gray;\n"
+"border-radius: 5px;\n"
+"color: white;\n"
+"}\n"
+"QPushButton#pushButton_aleatoria:pressed {\n"
+"    background-color: gray;\n"
+"    color:white;\n"
+"}")
         self.pushButton_aleatoria.setObjectName("pushButton_aleatoria")
         self.stackedWidget.addWidget(self.page_aleatoria)
         self.page_degrau = QtWidgets.QWidget()
@@ -226,35 +221,34 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_degrau_amplitude.setFont(font)
-        self.label_degrau_amplitude.setStyleSheet(
-            "QLabel{\n" "    border: 0px solid black;\n" "}"
-        )
+        self.label_degrau_amplitude.setStyleSheet("QLabel{\n"
+"    border: 0px solid black;\n"
+"}")
         self.label_degrau_amplitude.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_degrau_amplitude.setObjectName("label_degrau_amplitude")
         self.lineEdit_degrau_amplitude = QtWidgets.QLineEdit(self.frame_degrau)
         self.lineEdit_degrau_amplitude.setGeometry(QtCore.QRect(110, 70, 81, 21))
-        self.lineEdit_degrau_amplitude.setStyleSheet(
-            "QLineEdit{\n" "border: 1px solid black;\n" "border-radius: 5px;\n" "}"
-        )
+        self.lineEdit_degrau_amplitude.setStyleSheet("QLineEdit{\n"
+"border: 1px solid black;\n"
+"border-radius: 5px;\n"
+"}")
         self.lineEdit_degrau_amplitude.setObjectName("lineEdit_degrau_amplitude")
         self.pushButton_degrau = QtWidgets.QPushButton(self.frame_degrau)
         self.pushButton_degrau.setGeometry(QtCore.QRect(72, 120, 75, 24))
-        self.pushButton_degrau.setStyleSheet(
-            "QPushButton{\n"
-            "color:white;\n"
-            "border: 1px solid gray;\n"
-            "border-radius: 5px;\n"
-            "}\n"
-            "QPushButton#pushButton_degrau:pressed {\n"
-            "    background-color: gray;\n"
-            "    color:white;\n"
-            "}"
-        )
+        self.pushButton_degrau.setStyleSheet("QPushButton{\n"
+"color:white;\n"
+"border: 1px solid gray;\n"
+"border-radius: 5px;\n"
+"}\n"
+"QPushButton#pushButton_degrau:pressed {\n"
+"    background-color: gray;\n"
+"    color:white;\n"
+"}")
         self.pushButton_degrau.setObjectName("pushButton_degrau")
         self.stackedWidget.addWidget(self.page_degrau)
         self.frame = QtWidgets.QFrame(self.frame_geral)
-        self.frame.setGeometry(QtCore.QRect(30, 170, 231, 91))
-        self.frame.setStyleSheet("border: 2px solid white;")
+        self.frame.setGeometry(QtCore.QRect(30, 80, 231, 81))
+        self.frame.setStyleSheet("border: 1px solid gray;")
         self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame.setObjectName("frame")
@@ -268,13 +262,11 @@ class Ui_MainWindow(object):
         self.label.setObjectName("label")
         self.comboBox_malha = QtWidgets.QComboBox(self.frame)
         self.comboBox_malha.setGeometry(QtCore.QRect(130, 20, 91, 22))
-        self.comboBox_malha.setStyleSheet(
-            "QComboBox {\n"
-            "    border: 1px solid gray;\n"
-            "    border-radius: 5px;\n"
-            "    padding: 1px 3px 1px 3px;\n"
-            "}"
-        )
+        self.comboBox_malha.setStyleSheet("QComboBox {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 5px;\n"
+"    padding: 1px 3px 1px 3px;\n"
+"}")
         self.comboBox_malha.setObjectName("comboBox_malha")
         self.comboBox_malha.addItem("")
         self.comboBox_malha.addItem("")
@@ -288,13 +280,11 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName("label_2")
         self.comboBox_onda = QtWidgets.QComboBox(self.frame)
         self.comboBox_onda.setGeometry(QtCore.QRect(130, 50, 91, 21))
-        self.comboBox_onda.setStyleSheet(
-            "QComboBox {\n"
-            "    border: 1px solid gray;\n"
-            "    border-radius: 5px;\n"
-            "    padding: 1px 3px 1px 3px;\n"
-            "}"
-        )
+        self.comboBox_onda.setStyleSheet("QComboBox {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 5px;\n"
+"    padding: 1px 3px 1px 3px;\n"
+"}")
         self.comboBox_onda.setObjectName("comboBox_onda")
         self.comboBox_onda.addItem("")
         self.comboBox_onda.addItem("")
@@ -302,40 +292,208 @@ class Ui_MainWindow(object):
         self.comboBox_onda.addItem("")
         self.comboBox_onda.addItem("")
         self.widget_ploter = QtWidgets.QWidget(self.frame_geral)
-        self.widget_ploter.setGeometry(QtCore.QRect(290, 80, 781, 501))
+        self.widget_ploter.setGeometry(QtCore.QRect(290, 130, 781, 501))
         self.widget_ploter.setMinimumSize(QtCore.QSize(781, 501))
         self.widget_ploter.setMaximumSize(QtCore.QSize(781, 501))
-        self.widget_ploter.setStyleSheet("border: 1px solid white;")
+        self.widget_ploter.setStyleSheet("border: 1px solid gray;")
         self.widget_ploter.setObjectName("widget_ploter")
         self.frame_checkboxes = QtWidgets.QFrame(self.frame_geral)
-        self.frame_checkboxes.setGeometry(QtCore.QRect(460, 605, 401, 40))
-        self.frame_checkboxes.setStyleSheet(
-            "border: 1px solid white;\n" "checkBox{\n" "border: 0px solid gray;\n" "}"
-        )
+        self.frame_checkboxes.setGeometry(QtCore.QRect(290, 80, 781, 40))
+        self.frame_checkboxes.setStyleSheet("border: 1px solid gray;\n"
+"checkBox{\n"
+"border: 0px solid gray;\n"
+"}")
         self.frame_checkboxes.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_checkboxes.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_checkboxes.setObjectName("frame_checkboxes")
         self.checkBox_bloco1 = QtWidgets.QCheckBox(self.frame_checkboxes)
-        self.checkBox_bloco1.setGeometry(QtCore.QRect(20, 10, 111, 20))
-        self.checkBox_bloco1.setStyleSheet("color: white;\n" "border: 0px solid gray;")
+        self.checkBox_bloco1.setGeometry(QtCore.QRect(50, 10, 111, 20))
+        self.checkBox_bloco1.setStyleSheet("color: white;\n"
+"border: 0px solid gray;")
         self.checkBox_bloco1.setChecked(True)
         self.checkBox_bloco1.setObjectName("checkBox_bloco1")
         self.checkBox_bloco2 = QtWidgets.QCheckBox(self.frame_checkboxes)
-        self.checkBox_bloco2.setGeometry(QtCore.QRect(150, 11, 111, 20))
-        self.checkBox_bloco2.setStyleSheet("color: white;\n" "border: 0px solid gray;")
+        self.checkBox_bloco2.setGeometry(QtCore.QRect(310, 11, 111, 20))
+        self.checkBox_bloco2.setStyleSheet("color: white;\n"
+"border: 0px solid gray;")
         self.checkBox_bloco2.setChecked(True)
         self.checkBox_bloco2.setObjectName("checkBox_bloco2")
         self.checkBox_referencia = QtWidgets.QCheckBox(self.frame_checkboxes)
-        self.checkBox_referencia.setGeometry(QtCore.QRect(280, 10, 111, 20))
-        self.checkBox_referencia.setStyleSheet(
-            "color: white;\n" "border: 0px solid gray;"
-        )
+        self.checkBox_referencia.setGeometry(QtCore.QRect(580, 10, 111, 20))
+        self.checkBox_referencia.setStyleSheet("color: white;\n"
+"border: 0px solid gray;")
         self.checkBox_referencia.setChecked(True)
         self.checkBox_referencia.setObjectName("checkBox_referencia")
+        self.stackedWidget_controladores = QtWidgets.QStackedWidget(self.frame_geral)
+        self.stackedWidget_controladores.setGeometry(QtCore.QRect(30, 460, 231, 133))
+        self.stackedWidget_controladores.setStyleSheet("border: 1px solid gray;")
+        self.stackedWidget_controladores.setObjectName("stackedWidget_controladores")
+        self.page_P = QtWidgets.QWidget()
+        self.page_P.setObjectName("page_P")
+        self.frame_P = QtWidgets.QFrame(self.page_P)
+        self.frame_P.setGeometry(QtCore.QRect(6, 5, 217, 121))
+        self.frame_P.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_P.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_P.setObjectName("frame_P")
+        self.label_10 = QtWidgets.QLabel(self.frame_P)
+        self.label_10.setGeometry(QtCore.QRect(40, 56, 51, 17))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_10.setFont(font)
+        self.label_10.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.label_10.setStyleSheet("border: 0px solid gray;")
+        self.label_10.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_10.setObjectName("label_10")
+        self.lineEdit_P = QtWidgets.QLineEdit(self.frame_P)
+        self.lineEdit_P.setGeometry(QtCore.QRect(100, 50, 81, 25))
+        self.lineEdit_P.setStyleSheet("QLineEdit{\n"
+"border: 1px solid black;\n"
+"border-radius: 5px;\n"
+"}")
+        self.lineEdit_P.setObjectName("lineEdit_P")
+        self.stackedWidget_controladores.addWidget(self.page_P)
+        self.page_PI = QtWidgets.QWidget()
+        self.page_PI.setObjectName("page_PI")
+        self.frame_PI = QtWidgets.QFrame(self.page_PI)
+        self.frame_PI.setGeometry(QtCore.QRect(6, 5, 218, 121))
+        self.frame_PI.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_PI.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_PI.setObjectName("frame_PI")
+        self.label_12 = QtWidgets.QLabel(self.frame_PI)
+        self.label_12.setGeometry(QtCore.QRect(27, 30, 81, 17))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_12.setFont(font)
+        self.label_12.setStyleSheet("border: 0px solid gray;")
+        self.label_12.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_12.setObjectName("label_12")
+        self.label_pdpi = QtWidgets.QLabel(self.frame_PI)
+        self.label_pdpi.setGeometry(QtCore.QRect(30, 62, 71, 20))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_pdpi.setFont(font)
+        self.label_pdpi.setStyleSheet("border: 0px solid gray;")
+        self.label_pdpi.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_pdpi.setObjectName("label_pdpi")
+        self.lineEdit_PIPD_kp = QtWidgets.QLineEdit(self.frame_PI)
+        self.lineEdit_PIPD_kp.setGeometry(QtCore.QRect(120, 30, 71, 25))
+        self.lineEdit_PIPD_kp.setStyleSheet("QLineEdit{\n"
+"border: 1px solid black;\n"
+"border-radius: 5px;\n"
+"};")
+        self.lineEdit_PIPD_kp.setObjectName("lineEdit_PIPD_kp")
+        self.lineEdit_PIPD_ki = QtWidgets.QLineEdit(self.frame_PI)
+        self.lineEdit_PIPD_ki.setGeometry(QtCore.QRect(120, 62, 71, 25))
+        self.lineEdit_PIPD_ki.setStyleSheet("QLineEdit{\n"
+"border: 1px solid black;\n"
+"border-radius: 5px;\n"
+"}")
+        self.lineEdit_PIPD_ki.setObjectName("lineEdit_PIPD_ki")
+        self.stackedWidget_controladores.addWidget(self.page_PI)
+        self.page_PID = QtWidgets.QWidget()
+        self.page_PID.setObjectName("page_PID")
+        self.frame_PID = QtWidgets.QFrame(self.page_PID)
+        self.frame_PID.setGeometry(QtCore.QRect(6, 5, 217, 121))
+        self.frame_PID.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_PID.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_PID.setObjectName("frame_PID")
+        self.lineEdit_PID_kp = QtWidgets.QLineEdit(self.frame_PID)
+        self.lineEdit_PID_kp.setGeometry(QtCore.QRect(110, 14, 71, 25))
+        self.lineEdit_PID_kp.setStyleSheet("QLineEdit{\n"
+"border: 1px solid black;\n"
+"border-radius: 5px;\n"
+"};")
+        self.lineEdit_PID_kp.setObjectName("lineEdit_PID_kp")
+        self.lineEdit_PID_ki = QtWidgets.QLineEdit(self.frame_PID)
+        self.lineEdit_PID_ki.setGeometry(QtCore.QRect(110, 52, 71, 25))
+        self.lineEdit_PID_ki.setStyleSheet("QLineEdit{\n"
+"border: 1px solid black;\n"
+"border-radius: 5px;\n"
+"};")
+        self.lineEdit_PID_ki.setObjectName("lineEdit_PID_ki")
+        self.lineEdit_PID_kd = QtWidgets.QLineEdit(self.frame_PID)
+        self.lineEdit_PID_kd.setGeometry(QtCore.QRect(110, 86, 71, 25))
+        self.lineEdit_PID_kd.setStyleSheet("QLineEdit{\n"
+"border: 1px solid black;\n"
+"border-radius: 5px;\n"
+"};")
+        self.lineEdit_PID_kd.setObjectName("lineEdit_PID_kd")
+        self.label_14 = QtWidgets.QLabel(self.frame_PID)
+        self.label_14.setGeometry(QtCore.QRect(50, 19, 31, 17))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_14.setFont(font)
+        self.label_14.setStyleSheet("border: 0px solid gray;")
+        self.label_14.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_14.setObjectName("label_14")
+        self.label_15 = QtWidgets.QLabel(self.frame_PID)
+        self.label_15.setGeometry(QtCore.QRect(50, 53, 31, 17))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_15.setFont(font)
+        self.label_15.setStyleSheet("border: 0px solid gray;")
+        self.label_15.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_15.setObjectName("label_15")
+        self.label_16 = QtWidgets.QLabel(self.frame_PID)
+        self.label_16.setGeometry(QtCore.QRect(54, 90, 21, 17))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_16.setFont(font)
+        self.label_16.setStyleSheet("border: 0px solid gray;")
+        self.label_16.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_16.setObjectName("label_16")
+        self.stackedWidget_controladores.addWidget(self.page_PID)
+        self.frame_controle = QtWidgets.QFrame(self.frame_geral)
+        self.frame_controle.setGeometry(QtCore.QRect(30, 172, 231, 41))
+        self.frame_controle.setStyleSheet("border: 1px solid gray;")
+        self.frame_controle.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_controle.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_controle.setObjectName("frame_controle")
+        self.label_11 = QtWidgets.QLabel(self.frame_controle)
+        self.label_11.setGeometry(QtCore.QRect(10, 10, 100, 20))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_11.setFont(font)
+        self.label_11.setStyleSheet("border: 0px solid black;")
+        self.label_11.setObjectName("label_11")
+        self.comboBox_control = QtWidgets.QComboBox(self.frame_controle)
+        self.comboBox_control.setGeometry(QtCore.QRect(128, 9, 91, 25))
+        self.comboBox_control.setStyleSheet("QComboBox {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 5px;\n"
+"    padding: 1px 3px 1px 3px;\n"
+"}")
+        self.comboBox_control.setObjectName("comboBox_control")
+        self.comboBox_control.addItem("")
+        self.comboBox_control.addItem("")
+        self.comboBox_control.addItem("")
+        self.comboBox_control.addItem("")
+        self.comboBox_control.addItem("")
+        self.comboBox_control.addItem("")
+        self.pushButton_controle = QtWidgets.QPushButton(self.frame_geral)
+        self.pushButton_controle.setGeometry(QtCore.QRect(82, 602, 121, 31))
+        self.pushButton_controle.setStyleSheet("QPushButton{\n"
+"border: 1px solid gray;\n"
+"border-radius: 5px;\n"
+"color: white;\n"
+"}\n"
+"QPushButton#pushButton_controle:pressed {\n"
+"    background-color: gray;\n"
+"    color:white;\n"
+"}")
+        self.pushButton_controle.setObjectName("pushButton_controle")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget_controladores.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -364,11 +522,24 @@ class Ui_MainWindow(object):
         self.checkBox_bloco1.setText(_translate("MainWindow", "Saida Bloco 1"))
         self.checkBox_bloco2.setText(_translate("MainWindow", "Saida Bloco 2"))
         self.checkBox_referencia.setText(_translate("MainWindow", "Referência"))
+        self.label_10.setText(_translate("MainWindow", "Kp"))
+        self.label_12.setText(_translate("MainWindow", "Kp"))
+        self.label_pdpi.setText(_translate("MainWindow", "Ki"))
+        self.label_14.setText(_translate("MainWindow", "Kp"))
+        self.label_15.setText(_translate("MainWindow", "Ki"))
+        self.label_16.setText(_translate("MainWindow", "Kd"))
+        self.label_11.setText(_translate("MainWindow", "Controlador"))
+        self.comboBox_control.setItemText(0, _translate("MainWindow", "P"))
+        self.comboBox_control.setItemText(1, _translate("MainWindow", "PD"))
+        self.comboBox_control.setItemText(2, _translate("MainWindow", "PI"))
+        self.comboBox_control.setItemText(3, _translate("MainWindow", "PID"))
+        self.comboBox_control.setItemText(4, _translate("MainWindow", "PI-D"))
+        self.comboBox_control.setItemText(5, _translate("MainWindow", "I-PD"))
+        self.pushButton_controle.setText(_translate("MainWindow", "Aplicar Controle"))
 
 
 if __name__ == "__main__":
     import sys
-
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
