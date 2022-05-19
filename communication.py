@@ -19,7 +19,7 @@ class RemoteControl(QRunnable):
 
         self.verbose = verbose
         self.dynamicplotter = dynamicplotter
-        self.controllers = {"P": P(self.T, 0), "PI": PI(self.T, 0, 0), "PD":PD(self.T, 0, 0)}
+        self.controllers = {"P": P(self.T, 0), "PI": PI(self.T, 0, 0), "PD":PD(self.T, 0, 0), "PID":PID(self.T, 0, 0, 0)}
 
     async def serverLoop(self, websocket, path):
 

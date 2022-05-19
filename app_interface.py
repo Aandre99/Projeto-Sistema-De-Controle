@@ -125,9 +125,9 @@ class JanelaApp(QMainWindow):
             else:
                 self.plotter.D = float(self.ui.lineEdit_PIPD_ki.text())
         else:
-            self.P = float(self.ui.lineEdit_PID_kp.text())
-            self.I = float(self.ui.lineEdit_PID_ki.text())
-            self.D = float(self.ui.lineEdit_PID_kd.text())
+            self.plotter.P = float(self.ui.lineEdit_PID_kp.text())
+            self.plotter.I = float(self.ui.lineEdit_PID_ki.text())
+            self.plotter.D = float(self.ui.lineEdit_PID_kd.text())
 
     def closeEvent(self, event):
         os._exit(1)
