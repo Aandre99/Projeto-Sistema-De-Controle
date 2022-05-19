@@ -28,6 +28,7 @@ class DynamicPlotter:
         self.databuffer_output2 = collections.deque(
             [0.0] * self._bufsize, self._bufsize
         )
+        self.databuffer_error = collections.deque([0.0] * self._bufsize, self._bufsize)
 
         # Buffers
 
@@ -36,9 +37,10 @@ class DynamicPlotter:
         self.y_ref_IN = np.zeros(self._bufsize, dtype=float)
         self.y_out1 = np.zeros(self._bufsize, dtype=float)
         self.y_out2 = np.zeros(self._bufsize, dtype=float)
+        self.y_error = np.zeros(self._bufsize, dtype=float)
 
         self.type_loop = "Aberta"
-        
+
         # Valores para os campos da interface
 
         self.amplitude = 10
@@ -54,6 +56,7 @@ class DynamicPlotter:
         self.I = 0
         self.D = 0
         self.crtl = "P"
+        self.error = 0
 
         self.current_ref_value = 0
 
@@ -66,11 +69,13 @@ class DynamicPlotter:
         self.curve_ref_IN = self.plt.plot(self.x, self.y_ref_IN, pen=(255, 255, 0))
         self.curve_out1 = self.plt.plot(self.x, self.y_out1, pen=(255, 0, 0))
         self.curve_out2 = self.plt.plot(self.x, self.y_out2, pen=(0, 255, 0))
+        self.curve_error = self.plt.plot(self.x, self.y_error, pen=(0, 0, 255))
 
         self.plots = {
             "b1": [0, self.curve_out1],
             "b2": [0, self.curve_out2],
             "refIN": [0, self.curve_ref_IN],
+            "error": [0, self.curve_error],
         }
 
         self.time_flag = time.time()
@@ -122,14 +127,17 @@ class DynamicPlotter:
         self.databuffer_ref_IN.append(self.current_ref_value)
         self.databuffer_output1.append(out1)
         self.databuffer_output2.append(out2)
+        self.databuffer_error.append(self.error)
 
         self.y_ref_IN[:] = self.databuffer_ref_IN
         self.y_out1[:] = self.databuffer_output1
         self.y_out2[:] = self.databuffer_output2
+        self.y_error[:] = self.databuffer_error
 
         self.curve_ref_IN.setData(self.x, self.y_ref_IN)
         self.curve_out1.setData(self.x, self.y_out1)
         self.curve_out2.setData(self.x, self.y_out2)
+        self.curve_error.setData(self.x, self.y_error)
 
     def update_plot_curves(self, curve):
 
@@ -147,9 +155,9 @@ class DynamicPlotter:
             controllers[self.crtl].set_values(self.P, self.I, self.D)
             controllers[self.crtl].reference(self.current_ref_value)
             controllers[self.crtl].measured(out2)
-            u = controllers[self.crtl].control()
-            controllers[self.crtl].apply(u)
-            return u
+            self.error = controllers[self.crtl].control()
+            controllers[self.crtl].apply(self.error)
+            return self.error
 
     def get_widget(self):
         return self.plt

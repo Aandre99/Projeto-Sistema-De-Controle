@@ -766,7 +766,7 @@ border: 0px solid gray;</string>
      <widget class="QCheckBox" name="checkBox_bloco2">
       <property name="geometry">
        <rect>
-        <x>310</x>
+        <x>250</x>
         <y>11</y>
         <width>111</width>
         <height>20</height>
@@ -786,7 +786,7 @@ border: 0px solid gray;</string>
      <widget class="QCheckBox" name="checkBox_referencia">
       <property name="geometry">
        <rect>
-        <x>580</x>
+        <x>620</x>
         <y>10</y>
         <width>111</width>
         <height>20</height>
@@ -798,6 +798,26 @@ border: 0px solid gray;</string>
       </property>
       <property name="text">
        <string>Referência</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_error">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>10</y>
+        <width>111</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+border: 0px solid gray;</string>
+      </property>
+      <property name="text">
+       <string>error</string>
       </property>
       <property name="checked">
        <bool>true</bool>

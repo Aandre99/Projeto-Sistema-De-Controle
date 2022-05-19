@@ -18,7 +18,7 @@ class JanelaApp(QMainWindow):
         self.plotter = DynamicPlotter(self.ui.widget_ploter, 0.01, timewindow=10)
         self.graphWidget = self.plotter.get_widget()
         self.graphWidget.setObjectName("graphWidget")
-        
+
         self.ui.stackedWidget_controladores.setVisible(False)
         self.ui.frame_controle.setVisible(False)
         self.ui.pushButton_controle.setVisible(False)
@@ -34,7 +34,9 @@ class JanelaApp(QMainWindow):
         self.ui.lineEdit_aleatoria_PMax.setText("100")
 
         self.ui.comboBox_onda.currentTextChanged.connect(self.change_wave_widget)
-        self.ui.comboBox_control.currentTextChanged.connect(self.change_controller_widget)
+        self.ui.comboBox_control.currentTextChanged.connect(
+            self.change_controller_widget
+        )
 
         self.ui.pushButton_degrau.clicked.connect(self.setup_step_values)
         self.ui.pushButton_periodica.clicked.connect(self.setup_periodic_values)
@@ -49,6 +51,9 @@ class JanelaApp(QMainWindow):
         )
         self.ui.checkBox_referencia.stateChanged.connect(
             lambda x: self.plotter.update_plot_curves("refIN")
+        )
+        self.ui.checkBox_error.stateChanged.connect(
+            lambda x: self.plotter.update_plot_curves("error")
         )
 
         self.ui.comboBox_malha.currentTextChanged.connect(self.set_loop_type)
@@ -99,7 +104,7 @@ class JanelaApp(QMainWindow):
         self.plotter.max_value = float(self.ui.lineEdit_aleatoria_AMin.text())
 
     def set_loop_type(self, value):
-        
+
         visibleFlag = True if value == "Fechada" else False
 
         self.ui.frame_controle.setVisible(visibleFlag)
@@ -108,12 +113,12 @@ class JanelaApp(QMainWindow):
         self.plotter.type_loop = value
 
     def set_control_values(self):
-        
+
         ctrl = self.ui.comboBox_control.currentText()
 
         if ctrl == "P":
             self.plotter.P = float(self.ui.lineEdit_P.text())
-        elif ctrl in ['PI','PD']:
+        elif ctrl in ["PI", "PD"]:
             self.plotter.P = float(self.ui.lineEdit_PIPD_kp.text())
             if "I" in ctrl:
                 self.plotter.I = float(self.ui.lineEdit_PIPD_ki.text())

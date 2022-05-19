@@ -4,7 +4,7 @@ from collections import deque
 from math import *
 import numpy as np
 import time
-from websocketcontrol.controlers import P, PI
+from websocketcontrol.controlers import *
 
 from PyQt6.QtCore import QRunnable, pyqtSlot, QThreadPool
 
@@ -19,10 +19,7 @@ class RemoteControl(QRunnable):
 
         self.verbose = verbose
         self.dynamicplotter = dynamicplotter
-        self.controllers = {
-            "P": P(self.T, 0),
-            "PI":PI(self.T, 0, 0)
-        }
+        self.controllers = {"P": P(self.T, 0), "PI": PI(self.T, 0, 0), "PD":PD(self.T, 0, 0)}
 
     async def serverLoop(self, websocket, path):
 
@@ -47,7 +44,8 @@ class RemoteControl(QRunnable):
                 out2 = float(received[1])
 
                 await websocket.send(
-                    "set input|" + f"{float(self.dynamicplotter.get_ref_value(out2, self.controllers))}"
+                    "set input|"
+                    + f"{float(self.dynamicplotter.get_ref_value(out2, self.controllers))}"
                 )
                 await asyncio.sleep(self.T)
 
