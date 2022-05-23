@@ -1,4 +1,3 @@
-from curses import KEY_SDL
 from websocketcontrol.ControlLib import Control
 
 
@@ -89,3 +88,4 @@ class PID(Control):
         self.kp = kp
         self.ki = ki
         self.kd = kd
+

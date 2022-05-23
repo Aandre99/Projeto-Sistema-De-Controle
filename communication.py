@@ -19,7 +19,12 @@ class RemoteControl(QRunnable):
 
         self.verbose = verbose
         self.dynamicplotter = dynamicplotter
-        self.controllers = {"P": P(self.T, 0), "PI": PI(self.T, 0, 0), "PD":PD(self.T, 0, 0), "PID":PID(self.T, 0, 0, 0)}
+        self.controllers = {
+            "P": P(self.T, 0),
+            "PI": PI(self.T, 0, 0),
+            "PD": PD(self.T, 0, 0),
+            "PID": PID(self.T, 0, 0, 0),
+        }
 
     async def serverLoop(self, websocket, path):
 
@@ -43,9 +48,12 @@ class RemoteControl(QRunnable):
                 out1 = float(received[2])
                 out2 = float(received[1])
 
+                current_output_block = self.dynamicplotter.saida
+                outC = out1 if current_output_block == "Vermelho" else out2
+
                 await websocket.send(
                     "set input|"
-                    + f"{float(self.dynamicplotter.get_ref_value(out2, self.controllers))}"
+                    + f"{float(self.dynamicplotter.get_ref_value(outC, self.controllers))}"
                 )
                 await asyncio.sleep(self.T)
 

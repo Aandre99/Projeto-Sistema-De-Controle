@@ -29,8 +29,8 @@
    <widget class="QFrame" name="frame_geral">
     <property name="geometry">
      <rect>
-      <x>-1</x>
-      <y>-1</y>
+      <x>0</x>
+      <y>0</y>
       <width>1111</width>
       <height>691</height>
      </rect>
@@ -66,7 +66,7 @@ border: 1px solid white;
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>230</y>
+       <y>270</y>
        <width>231</width>
        <height>201</height>
       </rect>
@@ -180,7 +180,7 @@ border: 1px solid white;
         </property>
         <property name="geometry">
          <rect>
-          <x>120</x>
+          <x>130</x>
           <y>30</y>
           <width>71</width>
           <height>21</height>
@@ -199,7 +199,7 @@ border-radius: 5px;
         </property>
         <property name="geometry">
          <rect>
-          <x>120</x>
+          <x>130</x>
           <y>60</y>
           <width>71</width>
           <height>21</height>
@@ -218,7 +218,7 @@ border-radius: 5px;
         </property>
         <property name="geometry">
          <rect>
-          <x>120</x>
+          <x>130</x>
           <y>90</y>
           <width>71</width>
           <height>21</height>
@@ -569,9 +569,9 @@ QPushButton#pushButton_degrau:pressed {
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>80</y>
+       <y>20</y>
        <width>231</width>
-       <height>81</height>
+       <height>71</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -587,7 +587,7 @@ QPushButton#pushButton_degrau:pressed {
       <property name="geometry">
        <rect>
         <x>22</x>
-        <y>20</y>
+        <y>10</y>
         <width>100</width>
         <height>20</height>
        </rect>
@@ -609,7 +609,7 @@ QPushButton#pushButton_degrau:pressed {
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>20</y>
+        <y>10</y>
         <width>91</width>
         <height>22</height>
        </rect>
@@ -636,7 +636,7 @@ QPushButton#pushButton_degrau:pressed {
       <property name="geometry">
        <rect>
         <x>23</x>
-        <y>50</y>
+        <y>40</y>
         <width>101</width>
         <height>21</height>
        </rect>
@@ -658,7 +658,7 @@ QPushButton#pushButton_degrau:pressed {
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>50</y>
+        <y>40</y>
         <width>91</width>
         <height>21</height>
        </rect>
@@ -701,7 +701,7 @@ QPushButton#pushButton_degrau:pressed {
      <property name="geometry">
       <rect>
        <x>290</x>
-       <y>130</y>
+       <y>110</y>
        <width>781</width>
        <height>501</height>
       </rect>
@@ -726,9 +726,9 @@ QPushButton#pushButton_degrau:pressed {
      <property name="geometry">
       <rect>
        <x>290</x>
-       <y>80</y>
+       <y>20</y>
        <width>781</width>
-       <height>40</height>
+       <height>71</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -746,8 +746,8 @@ border: 0px solid gray;
      <widget class="QCheckBox" name="checkBox_bloco1">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>10</y>
+        <x>53</x>
+        <y>25</y>
         <width>111</width>
         <height>20</height>
        </rect>
@@ -766,8 +766,8 @@ border: 0px solid gray;</string>
      <widget class="QCheckBox" name="checkBox_bloco2">
       <property name="geometry">
        <rect>
-        <x>250</x>
-        <y>11</y>
+        <x>260</x>
+        <y>25</y>
         <width>111</width>
         <height>20</height>
        </rect>
@@ -787,7 +787,7 @@ border: 0px solid gray;</string>
       <property name="geometry">
        <rect>
         <x>620</x>
-        <y>10</y>
+        <y>26</y>
         <width>111</width>
         <height>20</height>
        </rect>
@@ -807,7 +807,7 @@ border: 0px solid gray;</string>
       <property name="geometry">
        <rect>
         <x>470</x>
-        <y>10</y>
+        <y>26</y>
         <width>111</width>
         <height>20</height>
        </rect>
@@ -828,7 +828,7 @@ border: 0px solid gray;</string>
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>460</y>
+       <y>480</y>
        <width>231</width>
        <height>133</height>
       </rect>
@@ -886,9 +886,9 @@ border: 0px solid gray;</string>
        <widget class="QLineEdit" name="lineEdit_P">
         <property name="geometry">
          <rect>
-          <x>100</x>
-          <y>50</y>
-          <width>81</width>
+          <x>120</x>
+          <y>52</y>
+          <width>71</width>
           <height>25</height>
          </rect>
         </property>
@@ -896,7 +896,7 @@ border: 0px solid gray;</string>
          <string notr="true">QLineEdit{
 border: 1px solid black;
 border-radius: 5px;
-}</string>
+};</string>
         </property>
        </widget>
       </widget>
@@ -1002,7 +1002,7 @@ border-radius: 5px;
       </widget>
      </widget>
      <widget class="QWidget" name="page_PID">
-      <widget class="QFrame" name="frame_PID">
+      <widget class="QFrame" name="frame_PID_ganhos">
        <property name="geometry">
         <rect>
          <x>6</x>
@@ -1147,9 +1147,9 @@ border-radius: 5px;
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>172</y>
+       <y>110</y>
        <width>231</width>
-       <height>41</height>
+       <height>81</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -1230,12 +1230,41 @@ border-radius: 5px;
        </property>
       </item>
      </widget>
+     <widget class="QCheckBox" name="checkBox_2">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>50</y>
+        <width>111</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px solid black;
+color: white;
+QCheckBox::indicator:checked {
+    color:red
+}</string>
+      </property>
+      <property name="text">
+       <string>Usar Ganhos</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
     </widget>
     <widget class="QPushButton" name="pushButton_controle">
      <property name="geometry">
       <rect>
        <x>82</x>
-       <y>602</y>
+       <y>620</y>
        <width>121</width>
        <height>31</height>
       </rect>
@@ -1254,6 +1283,80 @@ QPushButton#pushButton_controle:pressed {
      <property name="text">
       <string>Aplicar Controle</string>
      </property>
+    </widget>
+    <widget class="QFrame" name="frame_saida">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>210</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 1px solid gray;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QComboBox" name="comboBox_saida">
+      <property name="geometry">
+       <rect>
+        <x>125</x>
+        <y>7</y>
+        <width>91</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 1px 3px 1px 3px;
+}</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Verde</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Vermelho</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>101</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px solid black;</string>
+      </property>
+      <property name="text">
+       <string>Bloco Saida</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

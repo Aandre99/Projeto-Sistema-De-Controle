@@ -20,7 +20,7 @@ class DynamicPlotter:
         self._interval = int(sampleinterval * 1000)
 
         self._bufsize = int(timewindow / sampleinterval)
-        
+
         # Buffers
 
         self.databuffer_ref_IN = collections.deque([0.0] * self._bufsize, self._bufsize)
@@ -60,7 +60,8 @@ class DynamicPlotter:
         self.D = 0
         self.crtl = "P"
         self.error = 0
-        
+        self.saida = "Verde"
+
         # Configurações do plot
 
         self.plt = pg.PlotWidget(widget)
@@ -75,8 +76,8 @@ class DynamicPlotter:
         self.curve_out2 = self.plt.plot(self.x, self.y_out2, pen=(0, 255, 0))
         self.curve_error = self.plt.plot(self.x, self.y_error, pen=(0, 0, 255))
 
-        #Configurações para esconder curvas do plot
-        
+        # Configurações para esconder curvas do plot
+
         self.plots = {
             "b1": [0, self.curve_out1],
             "b2": [0, self.curve_out2],
