@@ -66,7 +66,7 @@ border: 1px solid white;
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>270</y>
+       <y>258</y>
        <width>231</width>
        <height>201</height>
       </rect>
@@ -701,7 +701,7 @@ QPushButton#pushButton_degrau:pressed {
      <property name="geometry">
       <rect>
        <x>290</x>
-       <y>110</y>
+       <y>90</y>
        <width>781</width>
        <height>501</height>
       </rect>
@@ -728,7 +728,7 @@ QPushButton#pushButton_degrau:pressed {
        <x>290</x>
        <y>20</y>
        <width>781</width>
-       <height>71</height>
+       <height>51</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -747,8 +747,8 @@ border: 0px solid gray;
       <property name="geometry">
        <rect>
         <x>53</x>
-        <y>25</y>
-        <width>111</width>
+        <y>19</y>
+        <width>151</width>
         <height>20</height>
        </rect>
       </property>
@@ -757,7 +757,7 @@ border: 0px solid gray;
 border: 0px solid gray;</string>
       </property>
       <property name="text">
-       <string>Saida Bloco 1</string>
+       <string>Saida 1 (Vermelha)</string>
       </property>
       <property name="checked">
        <bool>true</bool>
@@ -766,9 +766,9 @@ border: 0px solid gray;</string>
      <widget class="QCheckBox" name="checkBox_bloco2">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>25</y>
-        <width>111</width>
+        <x>320</x>
+        <y>16</y>
+        <width>131</width>
         <height>20</height>
        </rect>
       </property>
@@ -777,7 +777,7 @@ border: 0px solid gray;</string>
 border: 0px solid gray;</string>
       </property>
       <property name="text">
-       <string>Saida Bloco 2</string>
+       <string>Saida 2 (Verde)</string>
       </property>
       <property name="checked">
        <bool>true</bool>
@@ -787,7 +787,7 @@ border: 0px solid gray;</string>
       <property name="geometry">
        <rect>
         <x>620</x>
-        <y>26</y>
+        <y>17</y>
         <width>111</width>
         <height>20</height>
        </rect>
@@ -803,32 +803,12 @@ border: 0px solid gray;</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_error">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>26</y>
-        <width>111</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: white;
-border: 0px solid gray;</string>
-      </property>
-      <property name="text">
-       <string>error</string>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
-      </property>
-     </widget>
     </widget>
     <widget class="QStackedWidget" name="stackedWidget_controladores">
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>480</y>
+       <y>471</y>
        <width>231</width>
        <height>133</height>
       </rect>
@@ -1147,7 +1127,7 @@ border-radius: 5px;
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>110</y>
+       <y>106</y>
        <width>231</width>
        <height>81</height>
       </rect>
@@ -1263,8 +1243,8 @@ QCheckBox::indicator:checked {
     <widget class="QPushButton" name="pushButton_controle">
      <property name="geometry">
       <rect>
-       <x>82</x>
-       <y>620</y>
+       <x>83</x>
+       <y>619</y>
        <width>121</width>
        <height>31</height>
       </rect>
@@ -1288,7 +1268,7 @@ QPushButton#pushButton_controle:pressed {
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>210</y>
+       <y>203</y>
        <width>231</width>
        <height>41</height>
       </rect>
@@ -1355,6 +1335,108 @@ QPushButton#pushButton_controle:pressed {
       </property>
       <property name="text">
        <string>Bloco Saida</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="frame_checkboxes_erros">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>607</y>
+       <width>781</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 1px solid gray;
+checkBox{
+border: 0px solid gray;
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QCheckBox" name="checkBox_errorProp">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>10</y>
+        <width>151</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+border: 0px solid gray;</string>
+      </property>
+      <property name="text">
+       <string>Erro Proporcional</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_errorDeriv">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>10</y>
+        <width>131</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+border: 0px solid gray;</string>
+      </property>
+      <property name="text">
+       <string>Erro Derivativo</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_errorInteg">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>10</y>
+        <width>111</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+border: 0px solid gray;</string>
+      </property>
+      <property name="text">
+       <string>Erro Integral</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_errorGeral">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>111</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+border: 0px solid gray;</string>
+      </property>
+      <property name="text">
+       <string>Error Geral</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>

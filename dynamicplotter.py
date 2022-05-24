@@ -31,6 +31,9 @@ class DynamicPlotter:
             [0.0] * self._bufsize, self._bufsize
         )
         self.databuffer_error = collections.deque([0.0] * self._bufsize, self._bufsize)
+        self.databuffer_prop_error = collections.deque([0.0] * self._bufsize, self._bufsize)
+        self.databuffer_deriv_error = collections.deque([0.0] * self._bufsize, self._bufsize)
+        self.databuffer_integ_error = collections.deque([0.0] * self._bufsize, self._bufsize)
 
         self.x = np.linspace(0, timewindow, self._bufsize)
 
@@ -38,6 +41,9 @@ class DynamicPlotter:
         self.y_out1 = np.zeros(self._bufsize, dtype=float)
         self.y_out2 = np.zeros(self._bufsize, dtype=float)
         self.y_error = np.zeros(self._bufsize, dtype=float)
+        self.y_prop_error = np.zeros(self._bufsize, dtype=float)
+        self.y_deriv_error = np.zeros(self._bufsize, dtype=float)
+        self.y_integ_error = np.zeros(self._bufsize, dtype=float)
 
         self.type_loop = "Aberta"
 
@@ -55,11 +61,15 @@ class DynamicPlotter:
 
         # Valores para gerenciar as entradas para os controladores
 
-        self.P = 0
-        self.I = 0
-        self.D = 0
+        self.P = 0.00001
+        self.I = 0.00001
+        self.D = 0.00001
         self.crtl = "P"
         self.error = 0
+        self.prop_error = 0
+        self.integ_error = 0
+        self.deriv_error = 0
+
         self.saida = "Verde"
 
         # Configurações do plot
@@ -75,14 +85,21 @@ class DynamicPlotter:
         self.curve_out1 = self.plt.plot(self.x, self.y_out1, pen=(255, 0, 0))
         self.curve_out2 = self.plt.plot(self.x, self.y_out2, pen=(0, 255, 0))
         self.curve_error = self.plt.plot(self.x, self.y_error, pen=(0, 0, 255))
+        self.curve_prop_error = self.plt.plot(self.x, self.y_prop_error, pen=(131,111,255))
+        self.curve_deriv_error = self.plt.plot(self.x, self.y_deriv_error, pen=(255,69,0))
+        self.curve_integ_error = self.plt.plot(self.x, self.y_integ_error, pen=(176,224,230))
 
         # Configurações para esconder curvas do plot
 
         self.plots = {
+
             "b1": [0, self.curve_out1],
             "b2": [0, self.curve_out2],
             "refIN": [0, self.curve_ref_IN],
             "error": [0, self.curve_error],
+            "Deriv": [0, self.curve_deriv_error],
+            "Integ": [0, self.curve_integ_error],
+            "Prop": [0, self.curve_prop_error]
         }
 
         self.time_flag = time.time()
@@ -134,17 +151,30 @@ class DynamicPlotter:
         self.databuffer_ref_IN.append(self.current_ref_value)
         self.databuffer_output1.append(out1)
         self.databuffer_output2.append(out2)
+        
         self.databuffer_error.append(self.error)
+        self.databuffer_prop_error.append(self.prop_error)
+        self.databuffer_deriv_error.append(self.deriv_error)
+        self.databuffer_integ_error.append(self.integ_error)
 
         self.y_ref_IN[:] = self.databuffer_ref_IN
         self.y_out1[:] = self.databuffer_output1
         self.y_out2[:] = self.databuffer_output2
+
         self.y_error[:] = self.databuffer_error
+        self.y_prop_error[:] = self.databuffer_prop_error
+        self.y_deriv_error[:] = self.databuffer_deriv_error
+        self.y_integ_error[:] = self.databuffer_integ_error
 
         self.curve_ref_IN.setData(self.x, self.y_ref_IN)
         self.curve_out1.setData(self.x, self.y_out1)
         self.curve_out2.setData(self.x, self.y_out2)
+
         self.curve_error.setData(self.x, self.y_error)
+        self.curve_prop_error.setData(self.x, self.y_prop_error)
+        self.curve_deriv_error.setData(self.x, self.y_deriv_error)
+        self.curve_integ_error.setData(self.x, self.y_integ_error)
+
 
     def update_plot_curves(self, curve):
 
@@ -164,6 +194,9 @@ class DynamicPlotter:
             controllers[self.crtl].measured(out2)
             self.error = controllers[self.crtl].control()
             controllers[self.crtl].apply(self.error)
+
+            if self.crtl != "P":
+                self.prop_error, self.deriv_error, self.integ_error = controllers[self.crtl].get_components_erros()
             return self.error
 
     def get_widget(self):

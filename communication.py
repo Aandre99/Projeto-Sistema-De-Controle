@@ -20,55 +20,57 @@ class RemoteControl(QRunnable):
         self.verbose = verbose
         self.dynamicplotter = dynamicplotter
         self.controllers = {
-            "P": P(self.T, 0),
-            "PI": PI(self.T, 0, 0),
-            "PD": PD(self.T, 0, 0),
-            "PID": PID(self.T, 0, 0, 0),
+            "P": P(self.T),
+            "PI": PI(self.T),
+            "PD": PD(self.T),
+            "PID": PID(self.T),
+            "PI-D": PI_D(self.T),
+            "I-PD": I_PD(self.T)
         }
 
     async def serverLoop(self, websocket, path):
 
         while True:
 
-            try:
+            #try:
 
-                startTime = time.time()
-                self.time1 += self.T
+            startTime = time.time()
+            self.time1 += self.T
 
-                await websocket.send("get references")
-                received = (await websocket.recv()).split(",")
-                ref = float(received[1])
+            await websocket.send("get references")
+            received = (await websocket.recv()).split(",")
+            ref = float(received[1])
 
-                if isnan(ref):
-                    ref = 0.0
+            if isnan(ref):
+                ref = 0.0
 
-                await websocket.send("get outputs")
-                received = (await websocket.recv()).split(",")
+            await websocket.send("get outputs")
+            received = (await websocket.recv()).split(",")
 
-                out1 = float(received[2])
-                out2 = float(received[1])
+            out1 = float(received[2])
+            out2 = float(received[1])
 
-                current_output_block = self.dynamicplotter.saida
-                outC = out1 if current_output_block == "Vermelho" else out2
+            current_output_block = self.dynamicplotter.saida
+            outC = out1 if current_output_block == "Vermelho" else out2
 
-                await websocket.send(
-                    "set input|"
-                    + f"{float(self.dynamicplotter.get_ref_value(outC, self.controllers))}"
-                )
-                await asyncio.sleep(self.T)
+            await websocket.send(
+                "set input|"
+                + f"{float(self.dynamicplotter.get_ref_value(outC, self.controllers))}"
+            )
+            await asyncio.sleep(self.T)
 
-                ellapsedTime = 0.0
-                while ellapsedTime < self.T:
-                    time.sleep(0.0001)
-                    endTime = time.time()
-                    ellapsedTime = endTime - startTime
+            ellapsedTime = 0.0
+            while ellapsedTime < self.T:
+                time.sleep(0.0001)
+                endTime = time.time()
+                ellapsedTime = endTime - startTime
 
-                self.dynamicplotter.updateplot_communication(out1, out2, self.time1)
+            self.dynamicplotter.updateplot_communication(out1, out2, self.time1)
 
-            except Exception as e:
-                print(e)
-                print("System not active...") if self.verbose else None
-                break
+           #except Exception as e:
+           #     print(e)
+           #     print("System not active...") if self.verbose else None
+           #     break
 
     @pyqtSlot()
     def run(self):

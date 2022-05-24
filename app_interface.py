@@ -22,6 +22,7 @@ class JanelaApp(QMainWindow):
         self.gain_times_flag = 0
 
         self.ui.frame_saida.setVisible(False)
+        self.ui.frame_checkboxes_erros.setVisible(False)
         self.ui.stackedWidget_controladores.setVisible(False)
         self.ui.frame_controle.setVisible(False)
         self.ui.pushButton_controle.setVisible(False)
@@ -36,6 +37,13 @@ class JanelaApp(QMainWindow):
         self.ui.lineEdit_aleatoria_AMin.setText("5")
         self.ui.lineEdit_aleatoria_PMin.setText("50")
         self.ui.lineEdit_aleatoria_PMax.setText("100")
+
+        self.ui.lineEdit_P.setText("0.001")
+        self.ui.lineEdit_PID_kd.setText("0.00001")
+        self.ui.lineEdit_PID_ki.setText("0.00001")
+        self.ui.lineEdit_PID_kp.setText("0.00001")
+        self.ui.lineEdit_PIPD_ki.setText("0.00001")
+        self.ui.lineEdit_PIPD_kp.setText("0.00001")
 
         self.ui.comboBox_onda.currentTextChanged.connect(self.change_wave_widget)
         self.ui.comboBox_control.currentTextChanged.connect(
@@ -56,7 +64,16 @@ class JanelaApp(QMainWindow):
         self.ui.checkBox_referencia.stateChanged.connect(
             lambda x: self.plotter.update_plot_curves("refIN")
         )
-        self.ui.checkBox_error.stateChanged.connect(
+        self.ui.checkBox_errorDeriv.stateChanged.connect(
+            lambda x: self.plotter.update_plot_curves("Deriv")
+        )
+        self.ui.checkBox_errorInteg.stateChanged.connect(
+            lambda x: self.plotter.update_plot_curves("Integ")
+        )
+        self.ui.checkBox_errorProp.stateChanged.connect(
+            lambda x: self.plotter.update_plot_curves("Prop")
+        )
+        self.ui.checkBox_errorGeral.stateChanged.connect(
             lambda x: self.plotter.update_plot_curves("error")
         )
         self.ui.checkBox_2.stateChanged.connect(
@@ -98,6 +115,8 @@ class JanelaApp(QMainWindow):
                 self.ui.label_pdpi.setText(deriv)
             self.ui.stackedWidget_controladores.setCurrentWidget(self.ui.page_PI)
         else:
+            self.ui.label_15.setText(integ)
+            self.ui.label_16.setText(deriv)
             self.ui.stackedWidget_controladores.setCurrentWidget(self.ui.page_PID)
 
     def setup_step_values(self):
@@ -118,6 +137,7 @@ class JanelaApp(QMainWindow):
 
         visibleFlag = True if value == "Fechada" else False
 
+        self.ui.frame_checkboxes_erros.setVisible(visibleFlag)
         self.ui.frame_saida.setVisible(visibleFlag)
         self.ui.frame_controle.setVisible(visibleFlag)
         self.ui.pushButton_controle.setVisible(visibleFlag)
@@ -134,34 +154,18 @@ class JanelaApp(QMainWindow):
         elif ctrl in ["PI", "PD"]:
             kp = float(self.ui.lineEdit_PIPD_kp.text())
             ki = float(self.ui.lineEdit_PIPD_ki.text())
-
             self.plotter.P = kp
-
             if ctrl == "PI":
-                if flag:
-                    self.plotter.I = float(ki)
-                else:
-                    self.plotter.I = kp / (ki)
+                self.plotter.I = float(ki) if flag else (kp / ki)
             else:
-
-                if flag:
-                    self.plotter.D = float(ki)
-                else:
-                    self.plotter.D = kp * float(ki)
+                self.plotter.D = float(ki) if flag else kp * float(ki)
         else:
-
             kp = float(self.ui.lineEdit_PID_kp.text())
             ki = float(self.ui.lineEdit_PID_ki.text())
             kd = float(self.ui.lineEdit_PID_kd.text())
-
             self.plotter.P = kp
-
-            if flag:
-                self.plotter.I = ki
-                self.plotter.D = kd
-            else:
-                self.plotter.I = kp / ki
-                self.plotter.D = kp * kd
+            self.plotter.I = ki if flag else (kp / ki)
+            self.plotter.D = kd if flag else (kp * kd)
 
     def set_input_control_types(self):
 
@@ -176,7 +180,7 @@ class JanelaApp(QMainWindow):
             self.ui.label_pdpi.setText(integ)
         elif ctrl == "PD":
             self.ui.label_pdpi.setText(deriv)
-        elif ctrl == "PID":
+        else:
             self.ui.label_15.setText(integ)
             self.ui.label_16.setText(deriv)
 
