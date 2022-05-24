@@ -1376,7 +1376,7 @@ border: 0px solid gray;</string>
        <string>Erro Proporcional</string>
       </property>
       <property name="checked">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_errorDeriv">
@@ -1396,7 +1396,7 @@ border: 0px solid gray;</string>
        <string>Erro Derivativo</string>
       </property>
       <property name="checked">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_errorInteg">
@@ -1404,7 +1404,7 @@ border: 0px solid gray;</string>
        <rect>
         <x>600</x>
         <y>10</y>
-        <width>111</width>
+        <width>131</width>
         <height>20</height>
        </rect>
       </property>
@@ -1413,10 +1413,10 @@ border: 0px solid gray;</string>
 border: 0px solid gray;</string>
       </property>
       <property name="text">
-       <string>Erro Integral</string>
+       <string>Erro Integrativo</string>
       </property>
       <property name="checked">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_errorGeral">
@@ -1436,7 +1436,7 @@ border: 0px solid gray;</string>
        <string>Error Geral</string>
       </property>
       <property name="checked">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
     </widget>
