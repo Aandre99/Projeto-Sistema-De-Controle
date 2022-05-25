@@ -25,14 +25,14 @@ class RemoteControl(QRunnable):
             "PD": PD(self.T),
             "PID": PID(self.T),
             "PI-D": PI_D(self.T),
-            "I-PD": I_PD(self.T)
+            "I-PD": I_PD(self.T),
         }
 
     async def serverLoop(self, websocket, path):
 
         while True:
 
-            #try:
+            # try:
 
             startTime = time.time()
             self.time1 += self.T
@@ -67,10 +67,10 @@ class RemoteControl(QRunnable):
 
             self.dynamicplotter.updateplot_communication(out1, out2, self.time1)
 
-           #except Exception as e:
-           #     print(e)
-           #     print("System not active...") if self.verbose else None
-           #     break
+        # except Exception as e:
+        #     print(e)
+        #     print("System not active...") if self.verbose else None
+        #     break
 
     @pyqtSlot()
     def run(self):

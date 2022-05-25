@@ -18,7 +18,7 @@ class P(Control):
 
 
 # Controlador proporcional integrativo
-    
+
 
 class PI(Control):
     def __init__(self, T):
@@ -107,7 +107,7 @@ class PID(Control):
 
         if u > 100000:
             u = self.y(-1)
-            
+
         return u
 
     def set_values(self, kp, ki, kd):
@@ -118,10 +118,11 @@ class PID(Control):
     def get_components_erros(self):
         return self.proporcional_error, self.derivative_error, self.integral_error
 
+
 # Variação PI-D do PID
 
-class PI_D(Control):
 
+class PI_D(Control):
     def __init__(self, T):
 
         super().__init__(T, 2)
@@ -136,7 +137,7 @@ class PI_D(Control):
         self.derivative_error = 0
 
     def control(self):
-        
+
         self.error_integ += self.e(0)
         self.error_deriv = self.e(0) - self.e(-1)
 
@@ -150,7 +151,7 @@ class PI_D(Control):
             u = self.y(-1)
 
         return u
-    
+
     def set_values(self, kp, ki, kd):
 
         self.kp = kp
@@ -163,8 +164,8 @@ class PI_D(Control):
 
 # Variação I-PD do PID
 
-class I_PD(Control):
 
+class I_PD(Control):
     def __init__(self, T):
 
         super().__init__(T, 2)
@@ -180,7 +181,7 @@ class I_PD(Control):
         self.derivative_error = 0
 
     def control(self):
-        
+
         self.error_integ += self.e(0)
         self.error_deriv = self.e(0) - self.e(-1)
 
@@ -198,7 +199,7 @@ class I_PD(Control):
             u = self.y(-1)
 
         return u
-    
+
     def set_values(self, kp, ki, kd):
 
         self.kp = kp
@@ -207,4 +208,3 @@ class I_PD(Control):
 
     def get_components_erros(self):
         return self.proporcional_error, self.derivative_error, self.integral_error
-

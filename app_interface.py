@@ -76,9 +76,7 @@ class JanelaApp(QMainWindow):
         self.ui.checkBox_errorGeral.stateChanged.connect(
             lambda x: self.plotter.update_plot_curves("error")
         )
-        self.ui.checkBox_2.stateChanged.connect(
-            self.set_input_control_types
-        )
+        self.ui.checkBox_2.stateChanged.connect(self.set_input_control_types)
 
         self.ui.comboBox_malha.currentTextChanged.connect(self.set_loop_type)
         self.ui.comboBox_saida.currentTextChanged.connect(self.set_output_control)
@@ -88,7 +86,7 @@ class JanelaApp(QMainWindow):
         self.threadpool.start(self.server)
 
     def change_wave_widget(self, value):
-        
+
         if value == "Degrau":
             self.plotter.wave_type = "Degrau"
             self.ui.stackedWidget.setCurrentWidget(self.ui.page_degrau)
@@ -158,7 +156,7 @@ class JanelaApp(QMainWindow):
             if ctrl == "PI":
                 self.plotter.I = float(ki) if flag else (kp / ki)
             else:
-                self.plotter.D = float(ki) if flag else kp * float(ki)
+                self.plotter.D = float(ki) if flag else (kp * ki)
         else:
             kp = float(self.ui.lineEdit_PID_kp.text())
             ki = float(self.ui.lineEdit_PID_ki.text())

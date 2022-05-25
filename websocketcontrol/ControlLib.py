@@ -15,6 +15,9 @@ class Control:
         self._r = deque([0] * order)
         self.currU = 0
         self.time = 0.0
+        self.IAE = 0
+        self.ISE = 0
+        self.ITAE = 0
 
     def reference(self, ref):
         self._r.rotate(-1)
@@ -50,6 +53,18 @@ class Control:
 
     def y(self, index=0):
         return self._y[index - 1]
+
+    def IAE_error(self, N):
+        self.IAE += abs(self.e(0))
+        return self.IAE / N
+
+    def ISE_error(self, N):
+        self.ISE += self.e(0) ** 2
+        return self.ISE / N
+
+    def ITAE_error(self, N, t):
+        self.ITAE = abs(self.e(0)) * t
+        return self.ITAE / N
 
 
 class RemoteControl:

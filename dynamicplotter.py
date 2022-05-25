@@ -31,9 +31,15 @@ class DynamicPlotter:
             [0.0] * self._bufsize, self._bufsize
         )
         self.databuffer_error = collections.deque([0.0] * self._bufsize, self._bufsize)
-        self.databuffer_prop_error = collections.deque([0.0] * self._bufsize, self._bufsize)
-        self.databuffer_deriv_error = collections.deque([0.0] * self._bufsize, self._bufsize)
-        self.databuffer_integ_error = collections.deque([0.0] * self._bufsize, self._bufsize)
+        self.databuffer_prop_error = collections.deque(
+            [0.0] * self._bufsize, self._bufsize
+        )
+        self.databuffer_deriv_error = collections.deque(
+            [0.0] * self._bufsize, self._bufsize
+        )
+        self.databuffer_integ_error = collections.deque(
+            [0.0] * self._bufsize, self._bufsize
+        )
 
         self.x = np.linspace(0, timewindow, self._bufsize)
 
@@ -71,6 +77,8 @@ class DynamicPlotter:
         self.deriv_error = 0
 
         self.saida = "Verde"
+        self.current_time = 0
+        self.N = 0
 
         # Configurações do plot
 
@@ -85,21 +93,26 @@ class DynamicPlotter:
         self.curve_out1 = self.plt.plot(self.x, self.y_out1, pen=(255, 0, 0))
         self.curve_out2 = self.plt.plot(self.x, self.y_out2, pen=(0, 255, 0))
         self.curve_error = self.plt.plot(self.x, self.y_error, pen=(0, 0, 255))
-        self.curve_prop_error = self.plt.plot(self.x, self.y_prop_error, pen=(131,111,255))
-        self.curve_deriv_error = self.plt.plot(self.x, self.y_deriv_error, pen=(255,69,0))
-        self.curve_integ_error = self.plt.plot(self.x, self.y_integ_error, pen=(176,224,230))
+        self.curve_prop_error = self.plt.plot(
+            self.x, self.y_prop_error, pen=(131, 111, 255)
+        )
+        self.curve_deriv_error = self.plt.plot(
+            self.x, self.y_deriv_error, pen=(255, 69, 0)
+        )
+        self.curve_integ_error = self.plt.plot(
+            self.x, self.y_integ_error, pen=(176, 224, 230)
+        )
 
         # Configurações para esconder curvas do plot
 
         self.plots = {
-
             "b1": [0, self.curve_out1],
             "b2": [0, self.curve_out2],
             "refIN": [0, self.curve_ref_IN],
             "error": [0, self.curve_error],
             "Deriv": [0, self.curve_deriv_error],
             "Integ": [0, self.curve_integ_error],
-            "Prop": [0, self.curve_prop_error]
+            "Prop": [0, self.curve_prop_error],
         }
 
         self.time_flag = time.time()
@@ -147,11 +160,13 @@ class DynamicPlotter:
 
     def updateplot_communication(self, out1, out2, time):
 
+        self.N += 1
+        self.current_time = time
         self.current_ref_value = self.getdata(time)
         self.databuffer_ref_IN.append(self.current_ref_value)
         self.databuffer_output1.append(out1)
         self.databuffer_output2.append(out2)
-        
+
         self.databuffer_error.append(self.error)
         self.databuffer_prop_error.append(self.prop_error)
         self.databuffer_deriv_error.append(self.deriv_error)
@@ -175,7 +190,6 @@ class DynamicPlotter:
         self.curve_deriv_error.setData(self.x, self.y_deriv_error)
         self.curve_integ_error.setData(self.x, self.y_integ_error)
 
-
     def update_plot_curves(self, curve):
 
         self.plots[curve][0] += 1
@@ -193,10 +207,17 @@ class DynamicPlotter:
             controllers[self.crtl].reference(self.current_ref_value)
             controllers[self.crtl].measured(out2)
             self.error = controllers[self.crtl].control()
+
+            print(
+                f"IAE = {controllers[self.crtl].IAE_error(self.N)}, ISE = {controllers[self.crtl].ISE_error(self.N)}, ITAE = {controllers[self.crtl].ITAE_error(self.N, self.current_time)}"
+            )
+
             controllers[self.crtl].apply(self.error)
 
             if self.crtl != "P":
-                self.prop_error, self.deriv_error, self.integ_error = controllers[self.crtl].get_components_erros()
+                self.prop_error, self.deriv_error, self.integ_error = controllers[
+                    self.crtl
+                ].get_components_erros()
             return self.error
 
     def get_widget(self):
