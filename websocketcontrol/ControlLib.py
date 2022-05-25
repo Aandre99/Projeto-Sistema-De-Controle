@@ -56,14 +56,22 @@ class Control:
 
     def IAE_error(self, N):
         self.IAE += abs(self.e(0))
+        if N == 0:
+            return self.IAE
         return self.IAE / N
 
     def ISE_error(self, N):
         self.ISE += self.e(0) ** 2
+
+        if N == 0:
+            return self.ISE
+        
         return self.ISE / N
 
     def ITAE_error(self, N, t):
         self.ITAE = abs(self.e(0)) * t
+        if N == 0:
+            return self.ITAE
         return self.ITAE / N
 
 

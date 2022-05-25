@@ -208,10 +208,14 @@ class DynamicPlotter:
             controllers[self.crtl].measured(out2)
             self.error = controllers[self.crtl].control()
 
-            print(
-                f"IAE = {controllers[self.crtl].IAE_error(self.N)}, ISE = {controllers[self.crtl].ISE_error(self.N)}, ITAE = {controllers[self.crtl].ITAE_error(self.N, self.current_time)}"
-            )
+            iae_error = controllers[self.crtl].IAE_error(self.N)
+            ise_error = controllers[self.crtl].ISE_error(self.N)
+            itae_error = controllers[self.crtl].ITAE_error(self.N, self.current_time)
 
+            if self.N % 100 == 0:
+                print(
+                    f"IAE = {iae_error}, ISE = {ise_error}, ITAE = {itae_error}"
+                )
             controllers[self.crtl].apply(self.error)
 
             if self.crtl != "P":
