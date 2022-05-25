@@ -83,7 +83,7 @@ class Control:
             return None
         self.e1 += self.u(0)/N
         self.e2 += ((self.u(0) - self.e1) ** 2) / N
-        self.e3 += (r - y)/N
+        self.e3 += (self.e(0) ** 2)/N
         self.Goodhart = 0.4*self.e1 + 0.4*self.e2 + 0.2*self.e3
         return self.Goodhart 
 
