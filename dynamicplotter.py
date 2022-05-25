@@ -211,10 +211,11 @@ class DynamicPlotter:
             iae_error = controllers[self.crtl].IAE_error(self.N)
             ise_error = controllers[self.crtl].ISE_error(self.N)
             itae_error = controllers[self.crtl].ITAE_error(self.N, self.current_time)
+            goodhart_error = controllers[self.crtl].goodhart(self.N, self.current_ref_value, out2)
 
             if self.N % 100 == 0:
                 print(
-                    f"IAE = {iae_error}, ISE = {ise_error}, ITAE = {itae_error}"
+                    f"IAE = {iae_error}, ISE = {ise_error}, ITAE = {itae_error}, Goodhart = {goodhart_error}"
                 )
             controllers[self.crtl].apply(self.error)
 

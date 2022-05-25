@@ -18,6 +18,10 @@ class Control:
         self.IAE = 0
         self.ISE = 0
         self.ITAE = 0
+        self.Goodhart = 0
+        self.e1 = 0
+        self.e2 = 0
+        self.e3 = 0
 
     def reference(self, ref):
         self._r.rotate(-1)
@@ -73,7 +77,15 @@ class Control:
         if N == 0:
             return self.ITAE
         return self.ITAE / N
-
+    
+    def goodhart(self, N, r, y):
+        if N == 0:
+            return None
+        self.e1 += self.u(0)/N
+        self.e2 += ((self.u(0) - self.e1) ** 2) / N
+        self.e3 += (r - y)/N
+        self.Goodhart = 0.4*self.e1 + 0.4*self.e2 + 0.2*self.e3
+        return self.Goodhart 
 
 class RemoteControl:
     def __init__(self, controller, verbose=False):
